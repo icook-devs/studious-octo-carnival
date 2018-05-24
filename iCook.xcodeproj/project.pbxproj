@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
-		5C3F084320B61F4B003AC6FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084220B61F4B003AC6FB /* ViewController.swift */; };
+		5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084220B61F4B003AC6FB /* LoginViewController.swift */; };
 		5C3F084620B61F4B003AC6FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084420B61F4B003AC6FB /* Main.storyboard */; };
 		5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084720B61F4B003AC6FB /* Assets.xcassets */; };
 		5C3F084B20B61F4B003AC6FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084920B61F4B003AC6FB /* LaunchScreen.storyboard */; };
 		5C3F085620B61F4B003AC6FB /* iCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F085520B61F4B003AC6FB /* iCookTests.swift */; };
 		5C3F086120B61F4B003AC6FB /* iCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F086020B61F4B003AC6FB /* iCookUITests.swift */; };
+		5C3F087020B621CF003AC6FB /* SellerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */; };
+		5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F087120B64023003AC6FB /* SellerShopViewController.swift */; };
+		5C3F087420B67372003AC6FB /* SellerAddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		5C3F083D20B61F4B003AC6FB /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3F084020B61F4B003AC6FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C3F084220B61F4B003AC6FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C3F084220B61F4B003AC6FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C3F084520B61F4B003AC6FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C3F084720B61F4B003AC6FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C3F084A20B61F4B003AC6FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,9 @@
 		5C3F085C20B61F4B003AC6FB /* iCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3F086020B61F4B003AC6FB /* iCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCookUITests.swift; sourceTree = "<group>"; };
 		5C3F086220B61F4B003AC6FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerHomeViewController.swift; sourceTree = "<group>"; };
+		5C3F087120B64023003AC6FB /* SellerShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerShopViewController.swift; sourceTree = "<group>"; };
+		5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerAddDishViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,9 @@
 		5C3F083F20B61F4B003AC6FB /* iCook */ = {
 			isa = PBXGroup;
 			children = (
+				5C3F086E20B621AA003AC6FB /* Seller */,
 				5C3F084020B61F4B003AC6FB /* AppDelegate.swift */,
-				5C3F084220B61F4B003AC6FB /* ViewController.swift */,
+				5C3F084220B61F4B003AC6FB /* LoginViewController.swift */,
 				5C3F084420B61F4B003AC6FB /* Main.storyboard */,
 				5C3F084720B61F4B003AC6FB /* Assets.xcassets */,
 				5C3F084920B61F4B003AC6FB /* LaunchScreen.storyboard */,
@@ -123,6 +130,16 @@
 				5C3F086220B61F4B003AC6FB /* Info.plist */,
 			);
 			path = iCookUITests;
+			sourceTree = "<group>";
+		};
+		5C3F086E20B621AA003AC6FB /* Seller */ = {
+			isa = PBXGroup;
+			children = (
+				5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */,
+				5C3F087120B64023003AC6FB /* SellerShopViewController.swift */,
+				5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */,
+			);
+			path = Seller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C3F084320B61F4B003AC6FB /* ViewController.swift in Sources */,
+				5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */,
+				5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */,
+				5C3F087020B621CF003AC6FB /* SellerHomeViewController.swift in Sources */,
+				5C3F087420B67372003AC6FB /* SellerAddDishViewController.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
