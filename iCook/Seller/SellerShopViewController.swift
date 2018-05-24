@@ -1,0 +1,174 @@
+//
+//  SellerShopViewController.swift
+//  iCook
+//
+//  Created by Sharat Robin Reddy Guduru on 5/23/18.
+//  Copyright © 2018 Sharat Robin Reddy Guduru. All rights reserved.
+//
+
+import UIKit
+
+class ShopCell: UITableViewCell {
+    
+    @IBOutlet weak var fieldLabel: UILabel!
+    @IBOutlet weak var fieldTextField: UITextField!
+}
+
+enum PickerOption {
+    case cusineType
+    case timings
+    case foodType
+}
+
+
+class SellerShopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let Kitchen = 200
+    let cuisine = 201
+    let timings = 202
+    let food = 203
+    let order = 204
+    let payment = 205
+
+    @IBOutlet weak var tableView: UITableView!
+    var fieldArray = ["Kitchen Name", "Cuisine Type", "Timings", "Food Type", "Order Type", "Payment Type"]
+    var pickerView: UIPickerView?
+    var pickerDataSource = [String]()
+    var selectedTexfield:UITextField?
+    var keyboardToolBar: UIToolbar?
+    var delegate:shopSetupProtocol?
+    var shopData = [String: AnyObject]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pickerView = UIPickerView()
+        pickerView?.delegate = self
+        
+        keyboardToolBar = UIToolbar()
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done,
+                                              target: self,
+                                              action:#selector(donePressed))
+        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel,
+                                                target: self,
+                                                action: #selector(cancelPressed))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        keyboardToolBar?.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        keyboardToolBar?.isUserInteractionEnabled = true
+        keyboardToolBar?.sizeToFit()
+    }
+    
+    func getPickerDatasource(option: PickerOption) -> [String] {
+        switch option {
+        case .cusineType:
+            return ["South Indian", "North Indian", "Continental", "Any"]
+        case .timings:
+            return ["Lunch", "Dinner", "Lunch And Dinner"]
+        case .foodType:
+            return ["Veg", "Non-veg", "Vegan"]
+        }
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fieldArray.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as? ShopCell else {
+            return ShopCell()
+        }
+        cell.fieldLabel.text = fieldArray[indexPath.row]
+        cell.fieldTextField.tag = 200 + indexPath.row
+        cell.fieldTextField.delegate = self
+        if indexPath.row != 0 {
+            cell.fieldTextField.inputView = pickerView
+            cell.fieldTextField.inputAccessoryView = keyboardToolBar
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if selectedTexfield != nil {
+            selectedTexfield?.resignFirstResponder()
+        }
+    }
+    
+    @objc
+    func donePressed(sender: UIBarButtonItem) {
+        self.selectedTexfield?.resignFirstResponder()
+    }
+    
+    @objc
+    func cancelPressed(sender: UIBarButtonItem) {
+        self.selectedTexfield?.endEditing(true)
+    }
+    
+    @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
+        self.delegate?.fetchShopDetails(data: shopData)
+        self.dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension SellerShopViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.selectedTexfield = textField
+        switch textField.tag {
+        case cuisine:
+            pickerDataSource = getPickerDatasource(option: .cusineType)
+        case timings:
+            pickerDataSource = getPickerDatasource(option: .timings)
+        case food:
+            pickerDataSource = getPickerDatasource(option: .foodType)
+        default:
+            break
+        }
+
+
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case Kitchen:
+            shopData["Kitchen"] = textField.text as AnyObject
+        case cuisine:
+            shopData["Cuisine"] = textField.text as AnyObject
+        case timings:
+            shopData["Timings"] = textField.text as AnyObject
+        case food:
+            shopData["Food"] = textField.text as AnyObject
+        case order:
+            shopData["Order"] = textField.text as AnyObject
+        case payment:
+            shopData["Payment"] = textField.text as AnyObject
+        default:
+            break
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+   
+}
+
+extension SellerShopViewController: UIPickerViewDataSource,UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDataSource.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerDataSource[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedTexfield?.text = pickerDataSource[row]
+    }
+ 
+}
