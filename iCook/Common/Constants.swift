@@ -29,3 +29,26 @@ enum StoryboardID: String {
 enum UserDefaultsKey: String {
     case isKitchenAdded
 }
+
+struct FirebaseTable {
+    static let User = "User"
+    static let Seller = "Seller"
+    static let Buyyer = "Buyyer"
+    static let Dish = "Dish"
+}
+
+struct BuyyerTable {
+    static let Kitchen = "Kitchen"
+    static let Cuisine = "Cuisine"
+    static let Timings = "Timings"
+    static let Food = "Food"
+    static let Order = "Order"
+    static let Payment = "Payment"
+}
+
+struct DishTable {
+    static let Name = "Name"
+    static let Quantity = "Quantity"
+    static let Pricing = "Pricing"
+    static let Style = "Style"
+}

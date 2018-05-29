@@ -28,16 +28,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Da-2j-UJs">
                                 <rect key="frame" x="0.0" y="141" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EY7-I7-YLx">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EY7-I7-YLx" id="pD0-Lk-t1v">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2kh-ZV-HOg" id="fdX-1G-2Yl"/>
+                                    <outlet property="delegate" destination="2kh-ZV-HOg" id="IKV-OZ-nzo"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGZ-36-8iC">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -93,6 +87,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jbx-Ns-YVE"/>
                     <connections>
+                        <outlet property="dishesTableView" destination="2Da-2j-UJs" id="AuJ-HK-Tdo"/>
                         <outlet property="firstSetupView" destination="F9n-G6-Ywx" id="tfw-W9-O2q"/>
                         <outlet property="welcomeLabel" destination="Yy6-2r-P4O" id="UPZ-eP-s4j"/>
                     </connections>

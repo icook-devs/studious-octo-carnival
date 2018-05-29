@@ -42,7 +42,8 @@ class LoginViewController: UIViewController {
             let email = "sdodigam@gmail.com" //emailTextField.text ?? ""
             let password = "samba537" //passwordTextField.text ?? ""
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                if Util.getBool(.isKitchenAdded) == false {
+                if let user = user {
+                    Util.appDelegate().user = user
                     self.showHomeScreen()
                 }
             }

@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-class ShopCell: UITableViewCell {
-    
+class ShopCell: UITableViewCell {    
     @IBOutlet weak var fieldLabel: UILabel!
     @IBOutlet weak var fieldTextField: UITextField!
 }
@@ -29,6 +29,7 @@ class SellerShopViewController: UIViewController, UITableViewDelegate, UITableVi
     let food = 203
     let order = 204
     let payment = 205
+    var ref: DatabaseReference!
 
     @IBOutlet weak var tableView: UITableView!
     var fieldArray = ["Kitchen Name", "Cuisine Type", "Timings", "Food Type", "Order Type", "Payment Type"]
@@ -41,6 +42,8 @@ class SellerShopViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+
         pickerView = UIPickerView()
         pickerView?.delegate = self
         
@@ -96,17 +99,30 @@ class SellerShopViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc
     func donePressed(sender: UIBarButtonItem) {
+        let row = self.pickerView?.selectedRow(inComponent: 0) ?? 0
+        self.selectedTexfield?.text = self.pickerDataSource[row]
         self.selectedTexfield?.resignFirstResponder()
     }
-    
+
     @objc
     func cancelPressed(sender: UIBarButtonItem) {
+        self.selectedTexfield?.text = ""
         self.selectedTexfield?.endEditing(true)
     }
-    
+
+    func isValidateEntries() -> Bool {
+        return true
+    }
+
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        self.delegate?.fetchShopDetails(data: shopData)
-        self.dismiss(animated: true, completion: nil)
+        self.selectedTexfield?.resignFirstResponder()
+        if isValidateEntries() == true {
+            Util.setValue(true, key: .isKitchenAdded)
+            self.delegate?.fetchShopDetails(data: shopData)
+            let userId = Util.loggedInUser().uid
+            self.ref.child(FirebaseTable.User).child(userId).child(FirebaseTable.Buyyer).setValue(shopData)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
 }
@@ -125,9 +141,8 @@ extension SellerShopViewController: UITextFieldDelegate {
         default:
             break
         }
-
-
     }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case Kitchen:

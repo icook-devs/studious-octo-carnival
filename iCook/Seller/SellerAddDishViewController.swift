@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
 class itemCell: UITableViewCell {
     @IBOutlet weak var fieldLabel: UILabel!
     @IBOutlet weak var fieldTextField: UITextField!
@@ -20,6 +22,8 @@ class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableV
     let priceField = 303
     // add notes
     
+    var ref: DatabaseReference!
+
     @IBOutlet weak var tableView: UITableView!
     var fieldArray = ["Item Name", "Item Style", "Item Quantity", "Item Price"]
     var pickerView: UIPickerView?
@@ -31,6 +35,8 @@ class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+
         pickerView = UIPickerView()
         pickerView?.delegate = self
         
@@ -75,17 +81,30 @@ class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableV
     
     @objc
     func donePressed(sender: UIBarButtonItem) {
+        let row = self.pickerView?.selectedRow(inComponent: 0) ?? 0
+        self.selectedTexfield?.text = self.pickerDataSource[row]
         self.selectedTexfield?.resignFirstResponder()
     }
     
     @objc
     func cancelPressed(sender: UIBarButtonItem) {
+        self.selectedTexfield?.text = ""
         self.selectedTexfield?.endEditing(true)
     }
-    
+
+    func isValidateEntries() -> Bool {
+        return true
+    }
+
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        self.delegate?.getTodayDish(data: dishData)
         self.dismiss(animated: true, completion: nil)
+        if isValidateEntries() == true {
+            Util.setValue(true, key: .isKitchenAdded)
+            self.delegate?.getTodayDish(data: dishData)
+            let userId = Util.loggedInUser().uid
+            self.ref.child(FirebaseTable.User).child(userId).child(FirebaseTable.Dish).childByAutoId().setValue(dishData)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
@@ -94,7 +113,9 @@ extension SellerAddDishViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTexfield = textField
+        textField.keyboardType = textField.tag > 301 ? .numberPad : .alphabet
     }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case nameField:

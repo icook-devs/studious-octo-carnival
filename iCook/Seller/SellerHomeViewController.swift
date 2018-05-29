@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
 protocol shopSetupProtocol {
     func fetchShopDetails(data: [String: AnyObject]?)
     func getTodayDish(data: [String: AnyObject]?)
@@ -16,12 +18,44 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
    
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var firstSetupView: UIView!
+    @IBOutlet weak var dishesTableView: UITableView!
+    
+    var ref: DatabaseReference!
+    var refHandle: DatabaseHandle!
+    var dishesRefHandle: DatabaseHandle!
+    var dishes = [[String: String]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableViews()
+        let isKitchenAdded = Util.getBool(.isKitchenAdded)
+        firstSetupView.isHidden = isKitchenAdded
+        welcomeLabel.isHidden = true
+        ref = Database.database().reference()
 
-        // Do any additional setup after loading the view.
-        firstSetupView.isHidden = false
-        welcomeLabel.text = "Welcome to ABC Kitchen"
+//        refHandle = ref.child(FirebaseTable.Dish).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
+//            guard let strongSelf = self else { return }
+//            strongSelf.dishes.append(snapshot)
+//            strongSelf.dishesTableView.insertRows(at: [IndexPath(row: strongSelf.dishes.count-1, section: 0)], with: .automatic)
+//        })
+
+        dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            if let users = postDict[FirebaseTable.User] as? [String : AnyObject],
+                let loggedInUser = users[Util.loggedInUserUserID()] as? [String : AnyObject],
+                let buyyer = loggedInUser[FirebaseTable.Buyyer] as? [String : String] {
+                let kitchenName = buyyer["Kitchen"] ?? "" as String
+                self.welcomeLabel.text = "Welcome to \(kitchenName)"
+                self.welcomeLabel.isHidden = false
+                if let dishes = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
+                    self.dishes.removeAll()
+                    for dish in dishes {
+                        self.dishes.append(dish.value)
+                    }
+                    self.dishesTableView.reloadData()
+                }
+            }
+        })
 
     }
 
@@ -32,7 +66,7 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
         if let kitchenName = shopDetail["Kitchen"] as? String {
             welcomeLabel.text = "Welcome to \(kitchenName)"
         }
-        firstSetupView.isHidden = true
+        firstSetupView.isHidden = Util.getBool(.isKitchenAdded)
     }
     
     func getTodayDish(data: [String : AnyObject]?) {
