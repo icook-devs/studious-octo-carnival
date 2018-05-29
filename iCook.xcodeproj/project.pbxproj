@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7E204E20BDBEC1009457AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E204D20BDBEC1009457AB /* GoogleService-Info.plist */; };
+		2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205220BDC254009457AB /* Util+Storyboard.swift */; };
+		2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205320BDC254009457AB /* Util+UIAlertController.swift */; };
+		2C7E205720BDC254009457AB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205420BDC254009457AB /* Util.swift */; };
+		2C7E205920BDC294009457AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205820BDC293009457AB /* Constants.swift */; };
+		2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */; };
+		2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */; };
+		2C7E205F20BDC661009457AB /* SellerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E205C20BDC44B009457AB /* SellerHome.storyboard */; };
+		2C7E206120BDC7E8009457AB /* Kitchen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E206020BDC7E8009457AB /* Kitchen.storyboard */; };
+		2C7E206520BDC948009457AB /* AddDish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E206420BDC948009457AB /* AddDish.storyboard */; };
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
 		5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084220B61F4B003AC6FB /* LoginViewController.swift */; };
 		5C3F084620B61F4B003AC6FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084420B61F4B003AC6FB /* Main.storyboard */; };
@@ -41,6 +51,16 @@
 
 /* Begin PBXFileReference section */
 		0A28D914B9C36AD28B1E8686 /* Pods-iCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookTests/Pods-iCookTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C7E204D20BDBEC1009457AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2C7E205220BDC254009457AB /* Util+Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Util+Storyboard.swift"; sourceTree = "<group>"; };
+		2C7E205320BDC254009457AB /* Util+UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Util+UIAlertController.swift"; sourceTree = "<group>"; };
+		2C7E205420BDC254009457AB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		2C7E205820BDC293009457AB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Util+UserDefaults.swift"; sourceTree = "<group>"; };
+		2C7E205C20BDC44B009457AB /* SellerHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = SellerHome.storyboard; path = "/Users/Sambasiva/Documents/Siva/FoodApp/studious-octo-carnival/iCook/SellerHome.storyboard"; sourceTree = "<absolute>"; };
+		2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		2C7E206020BDC7E8009457AB /* Kitchen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kitchen.storyboard; sourceTree = "<group>"; };
+		2C7E206420BDC948009457AB /* AddDish.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddDish.storyboard; sourceTree = "<group>"; };
 		31555FEFAF395A1530002445 /* Pods-iCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCook/Pods-iCook.debug.xcconfig"; sourceTree = "<group>"; };
 		5C3F083D20B61F4B003AC6FB /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3F084020B61F4B003AC6FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +128,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2C7E205120BDC254009457AB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C7E205820BDC293009457AB /* Constants.swift */,
+				2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */,
+				2C7E205420BDC254009457AB /* Util.swift */,
+				2C7E205220BDC254009457AB /* Util+Storyboard.swift */,
+				2C7E205320BDC254009457AB /* Util+UIAlertController.swift */,
+				2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		5C3F083420B61F4B003AC6FB = {
 			isa = PBXGroup;
 			children = (
@@ -136,10 +169,15 @@
 				5C3F086E20B621AA003AC6FB /* Seller */,
 				5C3F084020B61F4B003AC6FB /* AppDelegate.swift */,
 				5C3F084220B61F4B003AC6FB /* LoginViewController.swift */,
+				2C7E205120BDC254009457AB /* Common */,
 				5C3F084420B61F4B003AC6FB /* Main.storyboard */,
+				2C7E206020BDC7E8009457AB /* Kitchen.storyboard */,
+				2C7E206420BDC948009457AB /* AddDish.storyboard */,
+				2C7E205C20BDC44B009457AB /* SellerHome.storyboard */,
 				5C3F084720B61F4B003AC6FB /* Assets.xcassets */,
 				5C3F084920B61F4B003AC6FB /* LaunchScreen.storyboard */,
 				5C3F084C20B61F4B003AC6FB /* Info.plist */,
+				2C7E204D20BDBEC1009457AB /* GoogleService-Info.plist */,
 			);
 			path = iCook;
 			sourceTree = "<group>";
@@ -294,6 +332,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C3F084B20B61F4B003AC6FB /* LaunchScreen.storyboard in Resources */,
+				2C7E206120BDC7E8009457AB /* Kitchen.storyboard in Resources */,
+				2C7E206520BDC948009457AB /* AddDish.storyboard in Resources */,
+				2C7E205F20BDC661009457AB /* SellerHome.storyboard in Resources */,
+				2C7E204E20BDBEC1009457AB /* GoogleService-Info.plist in Resources */,
 				5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */,
 				5C3F084620B61F4B003AC6FB /* Main.storyboard in Resources */,
 			);
@@ -403,9 +445,15 @@
 			files = (
 				5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */,
 				5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */,
+				2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */,
+				2C7E205720BDC254009457AB /* Util.swift in Sources */,
+				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,
+				2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */,
 				5C3F087020B621CF003AC6FB /* SellerHomeViewController.swift in Sources */,
 				5C3F087420B67372003AC6FB /* SellerAddDishViewController.swift in Sources */,
+				2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
+				2C7E205920BDC294009457AB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

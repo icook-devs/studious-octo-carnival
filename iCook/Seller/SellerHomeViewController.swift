@@ -43,18 +43,17 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
     }
     
     @IBAction func addKitchen(sender: UIButton) {
-        let sb = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-        let vc = sb.instantiateViewController(withIdentifier: "ShopVC") as! SellerShopViewController
-        vc.delegate = self
-        let nav = UINavigationController.init(rootViewController: vc)
-        self.present(nav, animated: true)
+        let shopNavVC = Util.navControllerFrom(storyboard: .kitchen, withIdentifier: .kitchenNavVC)
+        let shopViewController = shopNavVC.viewControllers[0] as? SellerShopViewController
+        shopViewController?.delegate = self
+        self.present(shopNavVC, animated: true)
     }
+    
     @IBAction func addItem(sender: UIButton) {
-        let sb = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-        let vc = sb.instantiateViewController(withIdentifier: "itemVC") as! SellerAddDishViewController
-        vc.delegate = self
-        let nav = UINavigationController.init(rootViewController: vc)
-        self.present(nav, animated: true)
+        let addDishNavVC = Util.navControllerFrom(storyboard: .addDish, withIdentifier: .addDishNavVC)
+        let addDishViewController = addDishNavVC.viewControllers[0] as? SellerAddDishViewController
+        addDishViewController?.delegate = self
+        self.present(addDishNavVC, animated: true)
     }
     
 }
