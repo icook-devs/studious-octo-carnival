@@ -7,7 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class Util: NSObject {
+    
+    class func appDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
+    class func loggedInUser() -> User {
+        guard let user = appDelegate().user else {
+            fatalError("Not logged in to app")
+        }
+        return user
+    }
+    class func loggedInUserUserID() -> String {
+        guard let user = appDelegate().user else {
+            fatalError("Not logged in to app")
+        }
+        return user.uid
+    }
 }
