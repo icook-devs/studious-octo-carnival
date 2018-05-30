@@ -26,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Da-2j-UJs">
-                                <rect key="frame" x="0.0" y="141" width="375" height="482"/>
+                                <rect key="frame" x="0.0" y="149" width="375" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2kh-ZV-HOg" id="fdX-1G-2Yl"/>
@@ -34,13 +34,18 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGZ-36-8iC">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="16" y="607" width="343" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="rAc-yh-zXp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Add items"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addItemWithSender:" destination="2kh-ZV-HOg" eventType="touchUpInside" id="yB7-PC-qRn"/>
                                 </connections>
@@ -49,10 +54,19 @@
                                 <rect key="frame" x="0.0" y="141" width="375" height="526"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdg-b9-49c">
-                                        <rect key="frame" x="136.5" y="245.5" width="103" height="34"/>
-                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <rect key="frame" x="16" y="241" width="343" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="aG4-Cw-LUF"/>
+                                            <constraint firstAttribute="width" constant="343" id="kA1-2f-YIa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <state key="normal" title="Add Kitchen"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addKitchenWithSender:" destination="2kh-ZV-HOg" eventType="touchUpInside" id="9uj-Dz-Nvu"/>
                                         </connections>
@@ -72,16 +86,16 @@
                             <constraint firstItem="2Da-2j-UJs" firstAttribute="trailing" secondItem="l3r-Pd-S80" secondAttribute="trailing" id="5Rl-6Y-otm"/>
                             <constraint firstItem="F9n-G6-Ywx" firstAttribute="leading" secondItem="l3r-Pd-S80" secondAttribute="leading" id="GQH-uA-bjT"/>
                             <constraint firstItem="Yy6-2r-P4O" firstAttribute="trailing" secondItem="l3r-Pd-S80" secondAttribute="trailing" id="Mxd-Ik-ZEr"/>
-                            <constraint firstItem="fGZ-36-8iC" firstAttribute="top" secondItem="2Da-2j-UJs" secondAttribute="bottom" id="WJS-5g-pqe"/>
+                            <constraint firstItem="fGZ-36-8iC" firstAttribute="top" secondItem="2Da-2j-UJs" secondAttribute="bottom" constant="3" id="WJS-5g-pqe"/>
                             <constraint firstItem="F9n-G6-Ywx" firstAttribute="top" secondItem="Yy6-2r-P4O" secondAttribute="bottom" constant="0.5" id="aM2-c3-mrB"/>
-                            <constraint firstItem="2Da-2j-UJs" firstAttribute="top" secondItem="Yy6-2r-P4O" secondAttribute="bottom" constant="0.5" id="egD-un-Ss2"/>
+                            <constraint firstItem="2Da-2j-UJs" firstAttribute="top" secondItem="Yy6-2r-P4O" secondAttribute="bottom" constant="8.5" id="egD-un-Ss2"/>
                             <constraint firstItem="F9n-G6-Ywx" firstAttribute="trailing" secondItem="l3r-Pd-S80" secondAttribute="trailing" id="k4q-Nr-g7E"/>
                             <constraint firstItem="Yy6-2r-P4O" firstAttribute="top" secondItem="l3r-Pd-S80" secondAttribute="top" id="kwt-Es-hAJ"/>
                             <constraint firstItem="2Da-2j-UJs" firstAttribute="leading" secondItem="l3r-Pd-S80" secondAttribute="leading" id="lwm-Ei-NFg"/>
-                            <constraint firstItem="fGZ-36-8iC" firstAttribute="trailing" secondItem="l3r-Pd-S80" secondAttribute="trailing" id="mI0-jD-LF6"/>
-                            <constraint firstItem="fGZ-36-8iC" firstAttribute="leading" secondItem="l3r-Pd-S80" secondAttribute="leading" id="sQa-Lf-wNL"/>
+                            <constraint firstItem="fGZ-36-8iC" firstAttribute="trailing" secondItem="l3r-Pd-S80" secondAttribute="trailing" constant="-16" id="mI0-jD-LF6"/>
+                            <constraint firstItem="fGZ-36-8iC" firstAttribute="leading" secondItem="l3r-Pd-S80" secondAttribute="leading" constant="16" id="sQa-Lf-wNL"/>
                             <constraint firstItem="F9n-G6-Ywx" firstAttribute="bottom" secondItem="l3r-Pd-S80" secondAttribute="bottom" id="tGu-UP-bZW"/>
-                            <constraint firstItem="fGZ-36-8iC" firstAttribute="bottom" secondItem="l3r-Pd-S80" secondAttribute="bottom" id="uer-7T-oVX"/>
+                            <constraint firstItem="fGZ-36-8iC" firstAttribute="bottom" secondItem="l3r-Pd-S80" secondAttribute="bottom" constant="-16" id="uer-7T-oVX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l3r-Pd-S80"/>
                     </view>
