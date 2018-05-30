@@ -9,10 +9,11 @@
 import UIKit
 import FirebaseDatabase
 
-class ShopCell: UITableViewCell {    
-    @IBOutlet weak var fieldLabel: UILabel!
-    @IBOutlet weak var fieldTextField: UITextField!
-}
+//class ShopCell: UITableViewCell {
+//    
+//    @IBOutlet weak var fieldLabel: UILabel!
+//    @IBOutlet weak var fieldTextField: UITextField!
+//}
 
 enum PickerOption {
     case cusineType
@@ -21,7 +22,7 @@ enum PickerOption {
 }
 
 
-class SellerShopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SellerShopViewController: UIViewController {
     
     let Kitchen = 200
     let cuisine = 201
@@ -31,8 +32,18 @@ class SellerShopViewController: UIViewController, UITableViewDelegate, UITableVi
     let payment = 205
     var ref: DatabaseReference!
 
-    @IBOutlet weak var tableView: UITableView!
-    var fieldArray = ["Kitchen Name", "Cuisine Type", "Timings", "Food Type", "Order Type", "Payment Type"]
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var kitchenNameField: UITextField!
+    @IBOutlet weak var cuisineField: UITextField!
+    @IBOutlet weak var timingField: UITextField!
+    @IBOutlet weak var foodField: UITextField!
+    @IBOutlet weak var orderField: UITextField!
+    @IBOutlet weak var paymentField: UITextField!
+
+    
+//    @IBOutlet weak var tableView: UITableView!
+//    var fieldArray = ["Kitchen Name", "Cuisine Type", "Timings", "Food Type", "Order Type", "Payment Type"]
     var pickerView: UIPickerView?
     var pickerDataSource = [String]()
     var selectedTexfield:UITextField?
@@ -58,6 +69,36 @@ class SellerShopViewController: UIViewController, UITableViewDelegate, UITableVi
         keyboardToolBar?.setItems([cancelButton, spaceButton, doneButton], animated: false)
         keyboardToolBar?.isUserInteractionEnabled = true
         keyboardToolBar?.sizeToFit()
+        
+        setupTextFields()
+    }
+    
+    
+    func setupTextFields() {
+        kitchenNameField.tag = Kitchen
+        kitchenNameField.delegate = self
+        
+        cuisineField.tag = cuisine
+        cuisineField.delegate = self
+        cuisineField.inputView = pickerView
+        cuisineField.inputAccessoryView = keyboardToolBar
+        
+        timingField.tag = timings
+        timingField.inputView = pickerView
+        timingField.inputAccessoryView = keyboardToolBar
+        
+        foodField.tag = food
+        foodField.inputView = pickerView
+        foodField.inputAccessoryView = keyboardToolBar
+        
+        orderField.tag = order
+        orderField.inputView = pickerView
+        orderField.inputAccessoryView = keyboardToolBar
+        
+        paymentField.tag = payment
+        paymentField.inputView = pickerView
+        paymentField.inputAccessoryView = keyboardToolBar
+        
     }
     
     func getPickerDatasource(option: PickerOption) -> [String] {
@@ -71,31 +112,31 @@ class SellerShopViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fieldArray.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as? ShopCell else {
-            return ShopCell()
-        }
-        cell.fieldLabel.text = fieldArray[indexPath.row]
-        cell.fieldTextField.tag = 200 + indexPath.row
-        cell.fieldTextField.delegate = self
-        if indexPath.row != 0 {
-            cell.fieldTextField.inputView = pickerView
-            cell.fieldTextField.inputAccessoryView = keyboardToolBar
-        }
-        return cell
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return fieldArray.count
+//    }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as? ShopCell else {
+//            return ShopCell()
+//        }
+//        cell.fieldLabel.text = fieldArray[indexPath.row]
+//        cell.fieldTextField.tag = 200 + indexPath.row
+//        cell.fieldTextField.delegate = self
+//        if indexPath.row != 0 {
+//            cell.fieldTextField.inputView = pickerView
+//            cell.fieldTextField.inputAccessoryView = keyboardToolBar
+//        }
+//        return cell
+//    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedTexfield != nil {
-            selectedTexfield?.resignFirstResponder()
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if selectedTexfield != nil {
+//            selectedTexfield?.resignFirstResponder()
+//        }
+//    }
     
     @objc
     func donePressed(sender: UIBarButtonItem) {
