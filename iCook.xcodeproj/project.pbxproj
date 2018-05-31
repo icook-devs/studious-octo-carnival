@@ -33,6 +33,8 @@
 		5C3F087020B621CF003AC6FB /* SellerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */; };
 		5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F087120B64023003AC6FB /* SellerShopViewController.swift */; };
 		5C3F087420B67372003AC6FB /* SellerAddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */; };
+		5CB84B6E20BF77E4006219B0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */; };
+		5CB84B7120BF85B0006219B0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB84B7020BF85B0006219B0 /* UserInfo.swift */; };
 		5CBFBBEA20BDE9F100D2BF99 /* SellerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */; };
 		64BDAC5A09FCC24B81F75584 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCCC8D87278434D9FB3F546 /* Pods_iCook.framework */; };
 		711820D9357F60C9EB4985B9 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */; };
@@ -91,6 +93,8 @@
 		5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerHomeViewController.swift; sourceTree = "<group>"; };
 		5C3F087120B64023003AC6FB /* SellerShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerShopViewController.swift; sourceTree = "<group>"; };
 		5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerAddDishViewController.swift; sourceTree = "<group>"; };
+		5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		5CB84B7020BF85B0006219B0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SellerHome.storyboard; sourceTree = "<group>"; };
 		7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8390C268DA59BFBEC5DA2471 /* Pods-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookUITests/Pods-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		5C34BD6720BE568A00AE6A72 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				5CB84B6F20BF854A006219B0 /* DataObject */,
+				5CB84B6C20BF77BD006219B0 /* AuthenticationService */,
 				5C34BD6C20BE5D7100AE6A72 /* SignupHelper */,
 				5C3F084220B61F4B003AC6FB /* LoginViewController.swift */,
 				5C34BD6A20BE571600AE6A72 /* SignUpViewController.swift */,
@@ -245,6 +251,22 @@
 				5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */,
 			);
 			path = Seller;
+			sourceTree = "<group>";
+		};
+		5CB84B6C20BF77BD006219B0 /* AuthenticationService */ = {
+			isa = PBXGroup;
+			children = (
+				5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */,
+			);
+			path = AuthenticationService;
+			sourceTree = "<group>";
+		};
+		5CB84B6F20BF854A006219B0 /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				5CB84B7020BF85B0006219B0 /* UserInfo.swift */,
+			);
+			path = DataObject;
 			sourceTree = "<group>";
 		};
 		644B1EF7C597B3DE153C5840 /* Frameworks */ = {
@@ -481,9 +503,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB84B7120BF85B0006219B0 /* UserInfo.swift in Sources */,
 				5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */,
 				5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */,
 				5C34BD6E20BE5DA500AE6A72 /* SignUpHelper.swift in Sources */,
+				5CB84B6E20BF77E4006219B0 /* AuthenticationService.swift in Sources */,
 				2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */,
 				2C7E205720BDC254009457AB /* Util.swift in Sources */,
 				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,

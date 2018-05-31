@@ -115,6 +115,7 @@ class SellerAddDishViewController: UIViewController {
     }
 
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
+        self.textFieldDidEndEditing(selectedTexfield!)
         self.dismiss(animated: true, completion: nil)
         if isValidateEntries() == true {
             Util.setValue(true, key: .isKitchenAdded)

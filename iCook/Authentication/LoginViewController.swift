@@ -23,8 +23,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         setupNavigationController()
         
-        emailField.text = "sdodigam@gmail.com" //emailTextField.text ?? ""
-        passwordField.text = "samba537" //passwordTextField.text ?? ""
+        emailField.text = "sharat.guduru@gmail.com" //emailTextField.text ?? ""
+        passwordField.text = "robin44DV" //passwordTextField.text ?? ""
 
     }
     
@@ -120,12 +120,16 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     @IBAction func loginButtonTapped() {
         if isValidCredentilas() {
-            let email = "sdodigam@gmail.com" //emailTextField.text ?? ""
-            let password = "samba537" //passwordTextField.text ?? ""
+            let email = emailField.text ?? "" //"sdodigam@gmail.com" //
+            let password = passwordField.text ?? "" //"samba537" //
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                if Util.getBool(.isKitchenAdded) == false {
-                    self.showHomeScreen()
+                if error == nil {
+                    Util.appDelegate().user = user
+                    if Util.getBool(.isKitchenAdded) == true {
+                        self.showHomeScreen()
+                    }
                 }
+                
             }
         }
 

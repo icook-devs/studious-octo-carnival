@@ -19,6 +19,8 @@ enum PickerOption {
     case cusineType
     case timings
     case foodType
+    case orderType
+    case paymentType
 }
 
 
@@ -108,7 +110,11 @@ class SellerShopViewController: UIViewController {
         case .timings:
             return ["Lunch", "Dinner", "Lunch And Dinner"]
         case .foodType:
-            return ["Veg", "Non-veg", "Vegan"]
+            return ["Veg", "Non-veg", "Vegan", "veg And Non-Veg"]
+        case .orderType:
+            return ["Pick-up"]
+        case .paymentType:
+            return ["Cash"]
         }
     }
 
@@ -179,9 +185,14 @@ extension SellerShopViewController: UITextFieldDelegate {
             pickerDataSource = getPickerDatasource(option: .timings)
         case food:
             pickerDataSource = getPickerDatasource(option: .foodType)
+        case order:
+            pickerDataSource = getPickerDatasource(option: .orderType)
+        case payment:
+            pickerDataSource = getPickerDatasource(option: .paymentType)
         default:
             break
         }
+        self.selectedTexfield?.text = pickerDataSource.first
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
