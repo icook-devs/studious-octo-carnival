@@ -114,8 +114,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             as? SellerHomeViewController else {
                 fatalError("No view controller with identifier SellerHomeViewController")
         }
-        self.navigationController?.pushViewController(sellerHomeViewController,
-                                                      animated: true)
+        self.navigationController?.present(sellerHomeViewController, animated: true)
     }
 
     @IBAction func loginButtonTapped() {

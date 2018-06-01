@@ -11,17 +11,16 @@ import FirebaseDatabase
 
 extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func setupTableViews() {
-        dishesTableView.estimatedRowHeight =  105
-        dishesTableView.rowHeight = UITableViewAutomaticDimension
-
         // Register the Cells using the NibLoadableView Protocol
         dishesTableView.register(DishTableViewCell.self)
+        dishesTableView.estimatedRowHeight =  UITableViewAutomaticDimension
+        dishesTableView.rowHeight = 150
     }
 
     // MARK: - Table View Row Methods
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dishes.count
@@ -29,6 +28,7 @@ extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueResuableCell(withClass: DishTableViewCell.self)
+        cell.setupCell()
         let dish = dishes[indexPath.row]
         cell.nameLabel.text = dish[DishTable.Name] ?? ""
         cell.quantityLabel.text = dish[DishTable.Quantity]! + "lb"

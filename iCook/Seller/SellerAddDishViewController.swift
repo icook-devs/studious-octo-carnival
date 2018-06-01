@@ -9,11 +9,6 @@
 import UIKit
 import FirebaseDatabase
 
-//class itemCell: UITableViewCell {
-//    @IBOutlet weak var fieldLabel: UILabel!
-//    @IBOutlet weak var fieldTextField: UITextField!
-//}
-
 class SellerAddDishViewController: UIViewController {
 
     let dishName = 300
@@ -28,9 +23,10 @@ class SellerAddDishViewController: UIViewController {
     @IBOutlet weak var dishStyleField: UITextField!
     @IBOutlet weak var quantityField: UITextField!
     @IBOutlet weak var priceField: UITextField!
+    @IBOutlet weak var availbilityField: UITextField!
     
-//    @IBOutlet weak var tableView: UITableView!
-//    var fieldArray = ["Item Name", "Item Style", "Item Quantity", "Item Price"]
+    @IBOutlet weak var notesTextView: UITextView!
+    
     var pickerView: UIPickerView?
     var pickerDataSource = ["South Indian", "North Indian"]
     var selectedTexfield:UITextField?
@@ -60,6 +56,16 @@ class SellerAddDishViewController: UIViewController {
         setupTextFields()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        scrollView.registerKeyboard()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        scrollView.deRegisterKeyboard()
+    }
+    
     func setupTextFields() {
         dishNameField.tag = dishName
         
@@ -70,32 +76,6 @@ class SellerAddDishViewController: UIViewController {
         quantityField.tag = dishQuantity
         priceField.tag = dishPrice
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return fieldArray.count
-//    }
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? itemCell else {
-//            return itemCell()
-//        }
-//        cell.fieldLabel.text = fieldArray[indexPath.row]
-//        cell.fieldTextField.tag = 300 + indexPath.row
-//        cell.fieldTextField.delegate = self
-//        if indexPath.row == 1 {
-//            cell.fieldTextField.inputView = pickerView
-//            cell.fieldTextField.inputAccessoryView = keyboardToolBar
-//        }
-//        return cell
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if selectedTexfield != nil {
-//            selectedTexfield?.resignFirstResponder()
-//        }
-//    }
     
     @objc
     func donePressed(sender: UIBarButtonItem) {
@@ -126,6 +106,9 @@ class SellerAddDishViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
 
 extension SellerAddDishViewController: UITextFieldDelegate {
