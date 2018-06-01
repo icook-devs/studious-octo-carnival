@@ -70,7 +70,14 @@ class SignUpViewController: UIViewController {
         let userInfo = UserInfo.init(firstname: firstName,
                                      lastname: lastName,
                                      email: email,
-                                     phone: phone)
+                                     phone: phone,
+                                     address: "400 Summerset ln",
+                                     address2: "",
+                                     city: "Atlanta",
+                                     state: "GA",
+                                     zipcode: 30328,
+                                     lat: 0.0,
+                                     lon: 0.0)
         return userInfo
     }
     

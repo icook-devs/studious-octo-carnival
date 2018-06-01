@@ -36,6 +36,7 @@
 		5CB84B6E20BF77E4006219B0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */; };
 		5CB84B7120BF85B0006219B0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB84B7020BF85B0006219B0 /* UserInfo.swift */; };
 		5CBFBBEA20BDE9F100D2BF99 /* SellerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */; };
+		5CC3375120C1FAFC00D32FAA /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375020C1FAFC00D32FAA /* ResetPasswordViewController.swift */; };
 		64BDAC5A09FCC24B81F75584 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCCC8D87278434D9FB3F546 /* Pods_iCook.framework */; };
 		711820D9357F60C9EB4985B9 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */; };
 		E75EEB462B75A84AE17F82DF /* Pods_iCookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */; };
@@ -96,6 +97,7 @@
 		5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		5CB84B7020BF85B0006219B0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SellerHome.storyboard; sourceTree = "<group>"; };
+		5CC3375020C1FAFC00D32FAA /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8390C268DA59BFBEC5DA2471 /* Pods-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookUITests/Pods-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				5C34BD6C20BE5D7100AE6A72 /* SignupHelper */,
 				5C3F084220B61F4B003AC6FB /* LoginViewController.swift */,
 				5C34BD6A20BE571600AE6A72 /* SignUpViewController.swift */,
+				5CC3375020C1FAFC00D32FAA /* ResetPasswordViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				5CB84B6E20BF77E4006219B0 /* AuthenticationService.swift in Sources */,
 				2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */,
 				2C7E205720BDC254009457AB /* Util.swift in Sources */,
+				5CC3375120C1FAFC00D32FAA /* ResetPasswordViewController.swift in Sources */,
 				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,
 				2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */,
 				5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */,

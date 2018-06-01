@@ -49,6 +49,18 @@ class AuthenticationService: NSObject {
         }
     }
     
+    class func resetPasswordWith(email:String, completion: @escaping (_ successfull: Bool) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if error != nil {
+                // send success
+                completion(true)
+            } else {
+                // send fail
+                completion(false)
+            }
+        }
+    }
+    
     private class func createUserInfoInFBDB(userInfo:UserInfo, user:User) {
         
         // NOTE: please feel free to optimize it if necessary.
