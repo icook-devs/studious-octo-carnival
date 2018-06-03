@@ -14,13 +14,15 @@
 		2C7E205920BDC294009457AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205820BDC293009457AB /* Constants.swift */; };
 		2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */; };
 		2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */; };
-		2C7E205F20BDC661009457AB /* SellerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E205C20BDC44B009457AB /* SellerHome.storyboard */; };
 		2C7E206120BDC7E8009457AB /* Kitchen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E206020BDC7E8009457AB /* Kitchen.storyboard */; };
 		2C7E206520BDC948009457AB /* AddDish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E206420BDC948009457AB /* AddDish.storyboard */; };
 		2C7E206720BDF135009457AB /* SellerHomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E206620BDF135009457AB /* SellerHomeViewController+TableView.swift */; };
 		2C7E206920BDF1C9009457AB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */; };
 		2C7E206C20BDF1E6009457AB /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E206A20BDF1E6009457AB /* DishTableViewCell.swift */; };
 		2C7E206D20BDF1E6009457AB /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7E206B20BDF1E6009457AB /* DishTableViewCell.xib */; };
+		5C34BD6B20BE571600AE6A72 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6A20BE571600AE6A72 /* SignUpViewController.swift */; };
+		5C34BD6E20BE5DA500AE6A72 /* SignUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6D20BE5DA500AE6A72 /* SignUpHelper.swift */; };
+		5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */; };
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
 		5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084220B61F4B003AC6FB /* LoginViewController.swift */; };
 		5C3F084620B61F4B003AC6FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084420B61F4B003AC6FB /* Main.storyboard */; };
@@ -31,6 +33,10 @@
 		5C3F087020B621CF003AC6FB /* SellerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */; };
 		5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F087120B64023003AC6FB /* SellerShopViewController.swift */; };
 		5C3F087420B67372003AC6FB /* SellerAddDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */; };
+		5CB84B6E20BF77E4006219B0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */; };
+		5CB84B7120BF85B0006219B0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB84B7020BF85B0006219B0 /* UserInfo.swift */; };
+		5CBFBBEA20BDE9F100D2BF99 /* SellerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */; };
+		5CC3375120C1FAFC00D32FAA /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375020C1FAFC00D32FAA /* ResetPasswordViewController.swift */; };
 		64BDAC5A09FCC24B81F75584 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCCC8D87278434D9FB3F546 /* Pods_iCook.framework */; };
 		711820D9357F60C9EB4985B9 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */; };
 		E75EEB462B75A84AE17F82DF /* Pods_iCookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */; };
@@ -61,7 +67,6 @@
 		2C7E205420BDC254009457AB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		2C7E205820BDC293009457AB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Util+UserDefaults.swift"; sourceTree = "<group>"; };
-		2C7E205C20BDC44B009457AB /* SellerHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = SellerHome.storyboard; path = "/Users/Sambasiva/Documents/Siva/FoodApp/studious-octo-carnival/iCook/SellerHome.storyboard"; sourceTree = "<absolute>"; };
 		2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		2C7E206020BDC7E8009457AB /* Kitchen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Kitchen.storyboard; sourceTree = "<group>"; };
 		2C7E206420BDC948009457AB /* AddDish.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddDish.storyboard; sourceTree = "<group>"; };
@@ -70,6 +75,9 @@
 		2C7E206A20BDF1E6009457AB /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
 		2C7E206B20BDF1E6009457AB /* DishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
 		31555FEFAF395A1530002445 /* Pods-iCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCook/Pods-iCook.debug.xcconfig"; sourceTree = "<group>"; };
+		5C34BD6A20BE571600AE6A72 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5C34BD6D20BE5DA500AE6A72 /* SignUpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpHelper.swift; sourceTree = "<group>"; };
+		5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
 		5C3F083D20B61F4B003AC6FB /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3F084020B61F4B003AC6FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C3F084220B61F4B003AC6FB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 		5C3F086F20B621CF003AC6FB /* SellerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerHomeViewController.swift; sourceTree = "<group>"; };
 		5C3F087120B64023003AC6FB /* SellerShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerShopViewController.swift; sourceTree = "<group>"; };
 		5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerAddDishViewController.swift; sourceTree = "<group>"; };
+		5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		5CB84B7020BF85B0006219B0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SellerHome.storyboard; sourceTree = "<group>"; };
+		5CC3375020C1FAFC00D32FAA /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8390C268DA59BFBEC5DA2471 /* Pods-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookUITests/Pods-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +158,30 @@
 				2C7E205320BDC254009457AB /* Util+UIAlertController.swift */,
 				2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */,
 				2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */,
+				5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		5C34BD6720BE568A00AE6A72 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				5CB84B6F20BF854A006219B0 /* DataObject */,
+				5CB84B6C20BF77BD006219B0 /* AuthenticationService */,
+				5C34BD6C20BE5D7100AE6A72 /* SignupHelper */,
+				5C3F084220B61F4B003AC6FB /* LoginViewController.swift */,
+				5C34BD6A20BE571600AE6A72 /* SignUpViewController.swift */,
+				5CC3375020C1FAFC00D32FAA /* ResetPasswordViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		5C34BD6C20BE5D7100AE6A72 /* SignupHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5C34BD6D20BE5DA500AE6A72 /* SignUpHelper.swift */,
+			);
+			path = SignupHelper;
 			sourceTree = "<group>";
 		};
 		5C3F083420B61F4B003AC6FB = {
@@ -175,14 +209,14 @@
 		5C3F083F20B61F4B003AC6FB /* iCook */ = {
 			isa = PBXGroup;
 			children = (
+				5C34BD6720BE568A00AE6A72 /* Authentication */,
 				5C3F086E20B621AA003AC6FB /* Seller */,
 				5C3F084020B61F4B003AC6FB /* AppDelegate.swift */,
-				5C3F084220B61F4B003AC6FB /* LoginViewController.swift */,
 				2C7E205120BDC254009457AB /* Common */,
 				5C3F084420B61F4B003AC6FB /* Main.storyboard */,
 				2C7E206020BDC7E8009457AB /* Kitchen.storyboard */,
 				2C7E206420BDC948009457AB /* AddDish.storyboard */,
-				2C7E205C20BDC44B009457AB /* SellerHome.storyboard */,
+				5CBFBBE920BDE9F100D2BF99 /* SellerHome.storyboard */,
 				5C3F084720B61F4B003AC6FB /* Assets.xcassets */,
 				5C3F084920B61F4B003AC6FB /* LaunchScreen.storyboard */,
 				5C3F084C20B61F4B003AC6FB /* Info.plist */,
@@ -220,6 +254,22 @@
 				5C3F087320B67372003AC6FB /* SellerAddDishViewController.swift */,
 			);
 			path = Seller;
+			sourceTree = "<group>";
+		};
+		5CB84B6C20BF77BD006219B0 /* AuthenticationService */ = {
+			isa = PBXGroup;
+			children = (
+				5CB84B6D20BF77E4006219B0 /* AuthenticationService.swift */,
+			);
+			path = AuthenticationService;
+			sourceTree = "<group>";
+		};
+		5CB84B6F20BF854A006219B0 /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				5CB84B7020BF85B0006219B0 /* UserInfo.swift */,
+			);
+			path = DataObject;
 			sourceTree = "<group>";
 		};
 		644B1EF7C597B3DE153C5840 /* Frameworks */ = {
@@ -345,9 +395,9 @@
 			files = (
 				5C3F084B20B61F4B003AC6FB /* LaunchScreen.storyboard in Resources */,
 				2C7E206D20BDF1E6009457AB /* DishTableViewCell.xib in Resources */,
+				5CBFBBEA20BDE9F100D2BF99 /* SellerHome.storyboard in Resources */,
 				2C7E206120BDC7E8009457AB /* Kitchen.storyboard in Resources */,
 				2C7E206520BDC948009457AB /* AddDish.storyboard in Resources */,
-				2C7E205F20BDC661009457AB /* SellerHome.storyboard in Resources */,
 				2C7E204E20BDBEC1009457AB /* GoogleService-Info.plist in Resources */,
 				5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */,
 				5C3F084620B61F4B003AC6FB /* Main.storyboard in Resources */,
@@ -456,12 +506,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB84B7120BF85B0006219B0 /* UserInfo.swift in Sources */,
 				5C3F084320B61F4B003AC6FB /* LoginViewController.swift in Sources */,
 				5C3F087220B64023003AC6FB /* SellerShopViewController.swift in Sources */,
+				5C34BD6E20BE5DA500AE6A72 /* SignUpHelper.swift in Sources */,
+				5CB84B6E20BF77E4006219B0 /* AuthenticationService.swift in Sources */,
 				2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */,
 				2C7E205720BDC254009457AB /* Util.swift in Sources */,
+				5CC3375120C1FAFC00D32FAA /* ResetPasswordViewController.swift in Sources */,
 				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,
 				2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */,
+				5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */,
 				5C3F087020B621CF003AC6FB /* SellerHomeViewController.swift in Sources */,
 				2C7E206C20BDF1E6009457AB /* DishTableViewCell.swift in Sources */,
 				5C3F087420B67372003AC6FB /* SellerAddDishViewController.swift in Sources */,
@@ -469,6 +524,7 @@
 				2C7E206720BDF135009457AB /* SellerHomeViewController+TableView.swift in Sources */,
 				2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
+				5C34BD6B20BE571600AE6A72 /* SignUpViewController.swift in Sources */,
 				2C7E205920BDC294009457AB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

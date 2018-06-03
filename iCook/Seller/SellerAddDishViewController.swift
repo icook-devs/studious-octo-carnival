@@ -9,23 +9,24 @@
 import UIKit
 import FirebaseDatabase
 
-class itemCell: UITableViewCell {
-    @IBOutlet weak var fieldLabel: UILabel!
-    @IBOutlet weak var fieldTextField: UITextField!
-}
+class SellerAddDishViewController: UIViewController {
 
-class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
-    let nameField = 300
-    let styleField = 301
-    let quantityField = 302
-    let priceField = 303
+    let dishName = 300
+    let dishStyle = 301
+    let dishQuantity = 302
+    let dishPrice = 303
     // add notes
     
     var ref: DatabaseReference!
-
-    @IBOutlet weak var tableView: UITableView!
-    var fieldArray = ["Item Name", "Item Style", "Item Quantity", "Item Price"]
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var dishNameField: UITextField!
+    @IBOutlet weak var dishStyleField: UITextField!
+    @IBOutlet weak var quantityField: UITextField!
+    @IBOutlet weak var priceField: UITextField!
+    @IBOutlet weak var availbilityField: UITextField!
+    
+    @IBOutlet weak var notesTextView: UITextView!
+    
     var pickerView: UIPickerView?
     var pickerDataSource = ["South Indian", "North Indian"]
     var selectedTexfield:UITextField?
@@ -51,32 +52,29 @@ class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableV
         keyboardToolBar?.setItems([cancelButton, spaceButton, doneButton], animated: false)
         keyboardToolBar?.isUserInteractionEnabled = true
         keyboardToolBar?.sizeToFit()
+        
+        setupTextFields()
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fieldArray.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? itemCell else {
-            return itemCell()
-        }
-        cell.fieldLabel.text = fieldArray[indexPath.row]
-        cell.fieldTextField.tag = 300 + indexPath.row
-        cell.fieldTextField.delegate = self
-        if indexPath.row == 1 {
-            cell.fieldTextField.inputView = pickerView
-            cell.fieldTextField.inputAccessoryView = keyboardToolBar
-        }
-        return cell
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        scrollView.registerKeyboard()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedTexfield != nil {
-            selectedTexfield?.resignFirstResponder()
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        scrollView.deRegisterKeyboard()
+    }
+    
+    func setupTextFields() {
+        dishNameField.tag = dishName
+        
+        dishStyleField.tag = dishStyle
+        dishStyleField.inputView = pickerView
+        dishStyleField.inputAccessoryView = keyboardToolBar
+        
+        quantityField.tag = dishQuantity
+        priceField.tag = dishPrice
     }
     
     @objc
@@ -97,6 +95,7 @@ class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableV
     }
 
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
+        self.textFieldDidEndEditing(selectedTexfield!)
         self.dismiss(animated: true, completion: nil)
         if isValidateEntries() == true {
             Util.setValue(true, key: .isKitchenAdded)
@@ -107,6 +106,9 @@ class SellerAddDishViewController: UIViewController,UITableViewDelegate,UITableV
         }
     }
     
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
 
 extension SellerAddDishViewController: UITextFieldDelegate {
@@ -118,13 +120,13 @@ extension SellerAddDishViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
-        case nameField:
+        case dishName:
             dishData["Name"] = textField.text as AnyObject
-        case styleField:
+        case dishStyle:
             dishData["Style"] = textField.text as AnyObject
-        case quantityField:
+        case dishQuantity:
             dishData["Quantity"] = textField.text as AnyObject
-        case priceField:
+        case dishPrice:
             dishData["Pricing"] = textField.text as AnyObject
         default:
             break

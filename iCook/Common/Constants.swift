@@ -35,6 +35,7 @@ struct FirebaseTable {
     static let Seller = "Seller"
     static let Buyyer = "Buyyer"
     static let Dish = "Dish"
+    static let UserInfo = "User_Info"
 }
 
 struct BuyyerTable {
