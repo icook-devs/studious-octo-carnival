@@ -117,6 +117,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.present(sellerHomeViewController, animated: true)
     }
 
+    func showAddKitchenVC() {
+        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .sellerHome,
+                                                                     withIdentifier: .sellerHomeViewController)
+            as? SellerHomeViewController else {
+                fatalError("No view controller with identifier SellerHomeViewController")
+        }
+        self.navigationController?.present(sellerHomeViewController,
+                                           animated: true,
+                                           completion: {
+                                            let shopNavVC = Util.navControllerFrom(storyboard: .kitchen,
+                                                                                   withIdentifier: .kitchenNavVC)
+                                            let shopViewController = shopNavVC.viewControllers[0] as? SellerShopViewController
+                                            shopViewController?.delegate = sellerHomeViewController
+                                            sellerHomeViewController.present(shopNavVC, animated: true)
+        })
+    }
+
     @IBAction func loginButtonTapped() {
         if isValidCredentilas() {
             let email = emailField.text ?? "" //"sdodigam@gmail.com" //
@@ -126,6 +143,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     Util.appDelegate().user = user
                     if Util.getBool(.isKitchenAdded) == true {
                         self.showHomeScreen()
+                    } else {
+                        self.showAddKitchenVC()
                     }
                 }
                 

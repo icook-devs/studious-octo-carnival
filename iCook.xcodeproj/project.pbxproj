@@ -209,9 +209,9 @@
 		5C3F083F20B61F4B003AC6FB /* iCook */ = {
 			isa = PBXGroup;
 			children = (
+				5C3F084020B61F4B003AC6FB /* AppDelegate.swift */,
 				5C34BD6720BE568A00AE6A72 /* Authentication */,
 				5C3F086E20B621AA003AC6FB /* Seller */,
-				5C3F084020B61F4B003AC6FB /* AppDelegate.swift */,
 				2C7E205120BDC254009457AB /* Common */,
 				5C3F084420B61F4B003AC6FB /* Main.storyboard */,
 				2C7E206020BDC7E8009457AB /* Kitchen.storyboard */,
