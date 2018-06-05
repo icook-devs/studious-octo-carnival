@@ -23,8 +23,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         setupNavigationController()
         
-        emailField.text = "sharat.guduru@gmail.com" //emailTextField.text ?? ""
-        passwordField.text = "robin44DV" //passwordTextField.text ?? ""
+        emailField.text = "sdodigam@gmail.com" //emailTextField.text ?? ""
+        passwordField.text = "samba537" //passwordTextField.text ?? ""
 
     }
     
@@ -138,18 +138,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         if isValidCredentilas() {
             let email = emailField.text ?? "" //"sdodigam@gmail.com" //
             let password = passwordField.text ?? "" //"samba537" //
+            Overlay.show(on: self.view)
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                 if error == nil {
                     Util.appDelegate().user = user
+                    Overlay.hide()
                     if Util.getBool(.isKitchenAdded) == true {
                         self.showHomeScreen()
                     } else {
                         self.showAddKitchenVC()
                     }
                 } else {
+                    Overlay.hide()
                     Util.showOkAlert(title: "Login Failed", message: error?.localizedDescription)
                 }
-                
             }
         }
 

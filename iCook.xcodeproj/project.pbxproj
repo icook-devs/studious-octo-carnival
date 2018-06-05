@@ -34,6 +34,8 @@
 		2CFA90A120C6FC8A00D58808 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA909D20C6FC8A00D58808 /* AuthenticationService.swift */; };
 		2CFA90A220C6FC8A00D58808 /* SignUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA909F20C6FC8A00D58808 /* SignUpHelper.swift */; };
 		2CFA90A320C6FC8A00D58808 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90A020C6FC8A00D58808 /* UserInfo.swift */; };
+		2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90A720C6FF3B00D58808 /* OverlayView.swift */; };
+		2CFA90AA20C6FF3B00D58808 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA90A820C6FF3B00D58808 /* OverlayView.xib */; };
 		5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */; };
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
 		5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084720B61F4B003AC6FB /* Assets.xcassets */; };
@@ -90,6 +92,8 @@
 		2CFA909D20C6FC8A00D58808 /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		2CFA909F20C6FC8A00D58808 /* SignUpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpHelper.swift; sourceTree = "<group>"; };
 		2CFA90A020C6FC8A00D58808 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		2CFA90A720C6FF3B00D58808 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		2CFA90A820C6FF3B00D58808 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		31555FEFAF395A1530002445 /* Pods-iCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCook/Pods-iCook.debug.xcconfig"; sourceTree = "<group>"; };
 		5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
 		5C3F083D20B61F4B003AC6FB /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +167,7 @@
 				2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */,
 				2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */,
 				5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */,
+				2CFA90A620C6FF3B00D58808 /* OverLay */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -237,6 +242,15 @@
 				2CFA909F20C6FC8A00D58808 /* SignUpHelper.swift */,
 			);
 			path = SignupHelper;
+			sourceTree = "<group>";
+		};
+		2CFA90A620C6FF3B00D58808 /* OverLay */ = {
+			isa = PBXGroup;
+			children = (
+				2CFA90A720C6FF3B00D58808 /* OverlayView.swift */,
+				2CFA90A820C6FF3B00D58808 /* OverlayView.xib */,
+			);
+			path = OverLay;
 			sourceTree = "<group>";
 		};
 		5C3F083420B61F4B003AC6FB = {
@@ -422,6 +436,7 @@
 				2CFA909020C6FC7F00D58808 /* BuyyerHome.storyboard in Resources */,
 				2CFA909420C6FC7F00D58808 /* DishTableViewCell.xib in Resources */,
 				5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */,
+				2CFA90AA20C6FF3B00D58808 /* OverlayView.xib in Resources */,
 				2CFA908D20C6FC7F00D58808 /* Main.storyboard in Resources */,
 				2CFA909520C6FC7F00D58808 /* Kitchen.storyboard in Resources */,
 			);
@@ -544,6 +559,7 @@
 				2CFA909120C6FC7F00D58808 /* BuyyerHomeViewController.swift in Sources */,
 				2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
+				2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */,
 				2CFA90A120C6FC8A00D58808 /* AuthenticationService.swift in Sources */,
 				2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */,
 				2CFA909920C6FC7F00D58808 /* SellerHomeViewController.swift in Sources */,
