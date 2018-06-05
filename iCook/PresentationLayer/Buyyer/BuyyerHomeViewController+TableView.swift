@@ -1,15 +1,14 @@
 //
-//  SellerHomeViewController+TableView.swift
+//  BuyyerHomeViewController+TableView.swift
 //  iCook
 //
-//  Created by Sambasiva Rao Dodigam on 5/29/18.
+//  Created by Sambasiva Rao Dodigam on 6/5/18.
 //  Copyright © 2018 Sharat Robin Reddy Guduru. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
 
-extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension BuyyerHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func setupTableViews() {
         // Register the Cells using the NibLoadableView Protocol
         dishesTableView.register(DishTableViewCell.self)
@@ -17,25 +16,29 @@ extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
         dishesTableView.rowHeight = 150
     }
 
-    // MARK: - Table View Row Methods
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sellers.count
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dishes.count
+        let seller = sellers[section]
+        return seller.dishes.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let seller = sellers[section]
+        return seller.kitchen?.name ?? ""
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueResuableCell(withClass: DishTableViewCell.self)
         cell.setupCell()
-        let dish = dishes[indexPath.row]
+        let seller = sellers[indexPath.section]
+        let dish = seller.dishes[indexPath.row]
         cell.nameLabel.text = dish.name
         cell.quantityLabel.text = "\(dish.quantity)" + "lb"
         cell.priceLabel.text = "$" + "\(dish.price)"
         cell.dishTypeLabel.text = dish.style
-
         return cell
     }
 }
-

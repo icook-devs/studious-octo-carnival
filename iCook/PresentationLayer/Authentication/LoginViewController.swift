@@ -16,7 +16,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var errorLblHeightConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var loginInAsSwitch: UISwitch!
+    @IBOutlet weak var loginButton: UIButton!
+
     var errorString:String?
     
     override func viewDidLoad() {
@@ -24,7 +26,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         setupNavigationController()
         emailField.text = "sdodigam1@gmail.com" //emailTextField.text ?? ""
         passwordField.text = "samba537" //passwordTextField.text ?? ""
-
+        updateLoginButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +49,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedStringKey.foregroundColor:UIColor.black,
              NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 22)]
+    }
+
+    func updateLoginButton() {
+        let loginButtonText = loginInAsSwitch.isOn ? "Login As Buyyer" : "Login As Seller"
+        loginButton.setTitle(loginButtonText, for: .normal)
     }
 
     func isValidCredentilas() -> Bool {
@@ -107,6 +114,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         showError(hide: true)
     }
 
+    func showBuyyerHomeScreen() {
+        let buyyerHomeNavVC = Util.navControllerFrom(storyboard: .buyyerHome,
+                                                              withIdentifier: .buyyerHomeNavVC)
+        self.present(buyyerHomeNavVC, animated: true)
+    }
+
     func showHomeScreen() {
         guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .sellerHome,
                                                                      withIdentifier: .sellerHomeViewController)
@@ -144,11 +157,16 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                 if error == nil {
                     Util.appDelegate().user = user
+                    Util.appDelegate().loggedInAsBuyyer = self.loginInAsSwitch.isOn
                     Overlay.hide()
-                    if Util.getBool(.isKitchenAdded) == true {
-                        self.showHomeScreen()
+                    if self.loginInAsSwitch.isOn == true {
+                        self.showBuyyerHomeScreen()
                     } else {
-                        self.showAddKitchenVC()
+                        if Util.getBool(.isKitchenAdded) == true {
+                            self.showHomeScreen()
+                        } else {
+                            self.showAddKitchenVC()
+                        }
                     }
                 } else {
                     Overlay.hide()
@@ -159,6 +177,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
+    }
+
+    @IBAction func loginAsSwitchValueChanged(_ sender: UISwitch) {
+        updateLoginButton()
     }
 }
 

@@ -36,6 +36,10 @@
 		2CFA90A320C6FC8A00D58808 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90A020C6FC8A00D58808 /* UserInfo.swift */; };
 		2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90A720C6FF3B00D58808 /* OverlayView.swift */; };
 		2CFA90AA20C6FF3B00D58808 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA90A820C6FF3B00D58808 /* OverlayView.xib */; };
+		2CFA90AC20C7216200D58808 /* BuyyerHomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AB20C7216200D58808 /* BuyyerHomeViewController+TableView.swift */; };
+		2CFA90AE20C7267F00D58808 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AD20C7267F00D58808 /* Kitchen.swift */; };
+		2CFA90B020C7268B00D58808 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AF20C7268B00D58808 /* Dish.swift */; };
+		2CFA90B220C727D400D58808 /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90B120C727D400D58808 /* Seller.swift */; };
 		5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */; };
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
 		5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084720B61F4B003AC6FB /* Assets.xcassets */; };
@@ -94,6 +98,10 @@
 		2CFA90A020C6FC8A00D58808 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2CFA90A720C6FF3B00D58808 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		2CFA90A820C6FF3B00D58808 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		2CFA90AB20C7216200D58808 /* BuyyerHomeViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuyyerHomeViewController+TableView.swift"; sourceTree = "<group>"; };
+		2CFA90AD20C7267F00D58808 /* Kitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
+		2CFA90AF20C7268B00D58808 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		2CFA90B120C727D400D58808 /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
 		31555FEFAF395A1530002445 /* Pods-iCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCook/Pods-iCook.debug.xcconfig"; sourceTree = "<group>"; };
 		5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
 		5C3F083D20B61F4B003AC6FB /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +206,7 @@
 			children = (
 				2CFA908020C6FC7F00D58808 /* BuyyerHome.storyboard */,
 				2CFA908120C6FC7F00D58808 /* BuyyerHomeViewController.swift */,
+				2CFA90AB20C7216200D58808 /* BuyyerHomeViewController+TableView.swift */,
 			);
 			path = Buyyer;
 			sourceTree = "<group>";
@@ -211,8 +220,8 @@
 				2CFA908620C6FC7F00D58808 /* Kitchen.storyboard */,
 				2CFA908720C6FC7F00D58808 /* SellerAddDishViewController.swift */,
 				2CFA908820C6FC7F00D58808 /* SellerHome.storyboard */,
-				2CFA908920C6FC7F00D58808 /* SellerHomeViewController+TableView.swift */,
 				2CFA908A20C6FC7F00D58808 /* SellerHomeViewController.swift */,
+				2CFA908920C6FC7F00D58808 /* SellerHomeViewController+TableView.swift */,
 				2CFA908B20C6FC7F00D58808 /* SellerShopViewController.swift */,
 			);
 			path = Seller;
@@ -224,6 +233,9 @@
 				2CFA909C20C6FC8A00D58808 /* AuthenticationService */,
 				2CFA909E20C6FC8A00D58808 /* SignupHelper */,
 				2CFA90A020C6FC8A00D58808 /* UserInfo.swift */,
+				2CFA90AD20C7267F00D58808 /* Kitchen.swift */,
+				2CFA90AF20C7268B00D58808 /* Dish.swift */,
+				2CFA90B120C727D400D58808 /* Seller.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -545,10 +557,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CFA909820C6FC7F00D58808 /* SellerHomeViewController+TableView.swift in Sources */,
+				2CFA90B020C7268B00D58808 /* Dish.swift in Sources */,
 				2CFA909A20C6FC7F00D58808 /* SellerShopViewController.swift in Sources */,
 				2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */,
 				2C7E205720BDC254009457AB /* Util.swift in Sources */,
 				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,
+				2CFA90AC20C7216200D58808 /* BuyyerHomeViewController+TableView.swift in Sources */,
 				2CFA909620C6FC7F00D58808 /* SellerAddDishViewController.swift in Sources */,
 				2CFA908E20C6FC7F00D58808 /* ResetPasswordViewController.swift in Sources */,
 				2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */,
@@ -564,7 +578,9 @@
 				2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */,
 				2CFA909920C6FC7F00D58808 /* SellerHomeViewController.swift in Sources */,
 				2C7E205920BDC294009457AB /* Constants.swift in Sources */,
+				2CFA90B220C727D400D58808 /* Seller.swift in Sources */,
 				2CFA90A320C6FC8A00D58808 /* UserInfo.swift in Sources */,
+				2CFA90AE20C7267F00D58808 /* Kitchen.swift in Sources */,
 				2CFA90A220C6FC8A00D58808 /* SignUpHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

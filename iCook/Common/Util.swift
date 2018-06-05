@@ -27,4 +27,8 @@ class Util: NSObject {
         }
         return user.uid
     }
+
+    class func loggedInAsBuyyer() -> Bool {
+        return appDelegate().loggedInAsBuyyer
+    }
 }

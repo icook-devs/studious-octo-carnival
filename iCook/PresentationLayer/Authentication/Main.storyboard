@@ -173,6 +173,20 @@
                                             <segue destination="1ui-q0-lPj" kind="show" id="yPS-ed-FE1"/>
                                         </connections>
                                     </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mox-cX-ihV">
+                                        <rect key="frame" x="232" y="109" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="loginAsSwitchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="tK0-Oh-MfV"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login as Buyyer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV7-45-BrH">
+                                        <rect key="frame" x="96" y="114" width="122" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="8Ox-KP-Nod" firstAttribute="centerX" secondItem="CVg-QI-dM6" secondAttribute="centerX" id="1I8-sd-dgO"/>
@@ -201,6 +215,8 @@
                         <outlet property="emailField" destination="Otr-SX-tKp" id="v56-iT-j8B"/>
                         <outlet property="errorLabel" destination="Wh0-24-3Ei" id="DIt-Bv-b1r"/>
                         <outlet property="errorLblHeightConstraint" destination="Rox-Z2-9cl" id="zbf-Al-bqL"/>
+                        <outlet property="loginButton" destination="FpF-ma-evI" id="fYZ-Yf-Pmp"/>
+                        <outlet property="loginInAsSwitch" destination="Mox-cX-ihV" id="FC9-Hr-Xac"/>
                         <outlet property="passwordField" destination="xAp-QM-ezy" id="kZA-7a-UiD"/>
                         <outlet property="scrollView" destination="CVg-QI-dM6" id="wp2-4G-Nex"/>
                     </connections>

@@ -23,7 +23,7 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
     var dishesRefHandle: DatabaseHandle!
-    var dishes = [[String: String]]()
+    var dishes = [Dish]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +48,11 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
                     self.welcomeLabel.text = "Welcome to \(kitchenName)"
                     self.welcomeLabel.isHidden = false
                 }
-                if let dishes = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
+                if let dishesArray = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()
-                    for dish in dishes {
-                        self.dishes.append(dish.value)
+                    for dishDict in dishesArray.values {
+                        let dishModel = Dish(dishDictory: dishDict as [String : AnyObject])
+                        self.dishes.append(dishModel)
                     }
                     self.dishesTableView.reloadData()
                 }
