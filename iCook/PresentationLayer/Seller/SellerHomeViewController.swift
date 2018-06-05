@@ -41,7 +41,7 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
 
         dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-            if let users = postDict[FirebaseTable.User] as? [String : AnyObject],
+            if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],
                 let loggedInUser = users[Util.loggedInUserUserID()] as? [String : AnyObject],
                 let buyyer = loggedInUser[FirebaseTable.Buyyer] as? [String : String] {
                 let kitchenName = buyyer["Kitchen"] ?? "" as String

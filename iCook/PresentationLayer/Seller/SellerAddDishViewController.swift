@@ -101,7 +101,7 @@ class SellerAddDishViewController: UIViewController {
             Util.setValue(true, key: .isKitchenAdded)
             self.delegate?.getTodayDish(data: dishData)
             let userId = Util.loggedInUser().uid
-            self.ref.child(FirebaseTable.User).child(userId).child(FirebaseTable.Dish).childByAutoId().setValue(dishData)
+            self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Dish).childByAutoId().setValue(dishData)
             self.dismiss(animated: true, completion: nil)
         }
     }

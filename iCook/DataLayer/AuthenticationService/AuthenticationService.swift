@@ -40,7 +40,7 @@ class AuthenticationService: NSObject {
                 let uObj = user{
                 print("user created successfully")
                 // once user created successfully, create userInfo table in FireBase DB
-                createUserInfoInFBDB(userInfo: userData!, user: uObj)
+                addSellerInfoInFBDB(userInfo: userData!, user: uObj)
                 completion(user, nil)
             } else {
                 // TODO# handle error scenarios
@@ -61,7 +61,7 @@ class AuthenticationService: NSObject {
         }
     }
     
-    private class func createUserInfoInFBDB(userInfo:UserInfo, user:User) {
+    private class func addSellerInfoInFBDB(userInfo:UserInfo, user:User) {
         
         // NOTE: please feel free to optimize it if necessary.
         let ref: DatabaseReference = Database.database().reference()
@@ -70,6 +70,6 @@ class AuthenticationService: NSObject {
                         "Last Name": userInfo.lastName,
                         "phone": userInfo.phone,
                         "email": userInfo.email] as AnyObject
-        ref.child(FirebaseTable.User).child(userId).child(FirebaseTable.UserInfo).setValue(userData)
+        ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.UserInfo).setValue(userData)
     }
 }

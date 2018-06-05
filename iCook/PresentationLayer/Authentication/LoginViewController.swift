@@ -146,6 +146,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     } else {
                         self.showAddKitchenVC()
                     }
+                } else {
+                    Util.showOkAlert(title: "Login Failed", message: error?.localizedDescription)
                 }
                 
             }
