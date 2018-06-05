@@ -33,6 +33,7 @@ enum UserDefaultsKey: String {
 struct FirebaseTable {
     static let Seller = "Seller"
     static let Buyyer = "Buyyer"
+    static let Kitchen = "Kitchen"
     static let Dish = "Dish"
     static let UserInfo = "UserInfo"
 }

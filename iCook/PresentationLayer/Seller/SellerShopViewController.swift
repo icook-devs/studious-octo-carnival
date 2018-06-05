@@ -167,7 +167,7 @@ class SellerShopViewController: UIViewController {
             Util.setValue(true, key: .isKitchenAdded)
             self.delegate?.fetchShopDetails(data: shopData)
             let userId = Util.loggedInUser().uid
-            self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Buyyer).setValue(shopData)
+            self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Kitchen).setValue(shopData)
             self.dismiss(animated: true, completion: nil)
         }
     }

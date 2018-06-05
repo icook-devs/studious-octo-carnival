@@ -42,11 +42,12 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
         dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
             if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],
-                let loggedInUser = users[Util.loggedInUserUserID()] as? [String : AnyObject],
-                let buyyer = loggedInUser[FirebaseTable.Buyyer] as? [String : String] {
-                let kitchenName = buyyer["Kitchen"] ?? "" as String
-                self.welcomeLabel.text = "Welcome to \(kitchenName)"
-                self.welcomeLabel.isHidden = false
+                let loggedInUser = users[Util.loggedInUserUserID()] as? [String : AnyObject] {
+                if let kitchen = loggedInUser[FirebaseTable.Kitchen] as? [String : String] {
+                    let kitchenName = kitchen["Kitchen"] ?? "" as String
+                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
+                    self.welcomeLabel.isHidden = false
+                }
                 if let dishes = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()
                     for dish in dishes {
