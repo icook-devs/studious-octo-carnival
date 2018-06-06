@@ -35,7 +35,8 @@ class FirebaseUtil: NSObject {
             if let data = snapshot.value as? NSDictionary {
                 NSLog("KitchenData: \(data)")
                 isAdded(true)
-            }
+            } else {
+                isAdded(false) }
         })
 
     }
