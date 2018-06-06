@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var  userName: UILabel!
@@ -18,17 +19,21 @@ class ProfileViewController: UIViewController {
     var myAccountListArray:[AnyObject] = []
 
     override func viewDidLoad() {
-        let button1 = UIBarButtonItem(image: UIImage(named: "cancel"),
-                                      style: .plain, target: self, action: Selector(("signout")))
-        self.navigationItem.rightBarButtonItem = button1
+        
+        
+//        let button1 = UIBarButtonItem(image: UIImage(named: "cancel"),
+//                                      style: .plain, target: self, action: Selector(("signout")))
+//        self.navigationItem.rightBarButtonItem = button1
         let firstCell = [profileTableViewCellTitle: "Account Settings"]
         let secondCell = [profileTableViewCellTitle: "Transaction History"]
         let thirdCell = [profileTableViewCellTitle: "Change Password"]
-        myAccountListArray = [firstCell, secondCell, thirdCell] as [AnyObject]
+        let fourthCell = [profileTableViewCellTitle: "SignOut"]
+        myAccountListArray = [firstCell, secondCell, thirdCell,fourthCell] as [AnyObject]
         
     }
     func signout() {
-       print("SignOut Pressed ")
+        try! Auth.auth().signOut()
+        self.navigationController?.popViewController(animated: false)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,6 +49,16 @@ class ProfileViewController: UIViewController {
         cell.titleLabel.text = myAccountListArray[indexPath.row][profileTableViewCellTitle] as? String
         return cell
     }
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ProfileCell
+        if cell.titleLabel.text == "SignOut" {
+            signout()
+        }
+        
+    }
+    
+  
     
 
 }
