@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 class SignUpViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameField: UITextField!
@@ -16,10 +16,28 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var addressField2: UITextField!
+    @IBOutlet weak var cityField: UITextField!
+    @IBOutlet weak var stateField: UITextField!
+    @IBOutlet weak var zipcodeField: UITextField!
     var userData: UserInfo?
+    var coordinates: CLLocationCoordinate2D?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationController()
+        
+        firstNameField.text = "Robin"
+        lastNameField.text = "Guduru"
+        phoneField.text = "1231231234"
+        emailField.text = "sharat.guduru+2@gmail.com"
+        passwordField.text = "Abc123"
+        addressField.text = "330 summerset ln"
+        addressField2.text = ""
+        cityField.text = "Atlanta"
+        stateField.text = "GA"
+        zipcodeField.text = "30328"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +70,11 @@ class SignUpViewController: UIViewController {
             (lastNameField.text?.isEmpty)! ||
             (phoneField.text?.isEmpty)! ||
             (emailField.text?.isEmpty)! ||
-            (passwordField.text?.isEmpty)! {
+            (passwordField.text?.isEmpty)! ||
+            (addressField.text?.isEmpty)! ||
+            (cityField.text?.isEmpty)! ||
+            (stateField.text?.isEmpty)! ||
+            (zipcodeField.text?.isEmpty)! {
             return false
         }
         return true
@@ -71,13 +93,13 @@ class SignUpViewController: UIViewController {
                                      lastname: lastName,
                                      email: email,
                                      phone: phone,
-                                     address: "400 Summerset ln",
-                                     address2: "",
-                                     city: "Atlanta",
-                                     state: "GA",
-                                     zipcode: 30328,
-                                     lat: 0.0,
-                                     lon: 0.0)
+                                     address: addressField.text!,
+                                     address2: addressField2.text!,
+                                     city: cityField.text!,
+                                     state: stateField.text!,
+                                     zipcode: Int(zipcodeField.text!)!,
+                                     lat: (self.coordinates?.longitude)!,
+                                     lon: (coordinates?.longitude)!)
         return userInfo
     }
     
@@ -92,18 +114,36 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func signUpTapped(_ sender: Any) {
+        let addressStr = SignUpHelper.formatAddress(add: addressField.text!,
+                                                    add2: addressField2.text!,
+                                                    city: cityField.text!,
+                                                    state: stateField.text!,
+                                                    zip: Int(zipcodeField.text!)!) as String
         
-        if validateFields() {
-            AuthenticationService.createUser(userData: getUserInfo(),
-                                             password: passwordField.text!,
-                                             completion: { (user, error) in
-                                                if user != nil {
-                                                    print("user created successfully")
-                                                    self.showHomeScreen()
-                                                } else {
-                                                    // handle Error
-                                                }
-            })
+        SignUpHelper.getCoordinatesFrom(address: addressStr) {[weak self] (coord, error) in
+            
+            if error != nil {
+                // show error
+                return
+            }
+            
+            self?.coordinates = coord
+            
+            if (self?.validateFields())! {
+                AuthenticationService.createUser(userData: self?.getUserInfo(),
+                                                 password: (self?.passwordField.text!)!,
+                                                 completion: { (user, error) in
+                                                    if user != nil {
+                                                        Util.appDelegate().user = user
+                                                        print("user created successfully")
+                                                        self?.showHomeScreen()
+                                                    } else {
+                                                        // handle Error
+                                                    }
+                })
+            }
+            
+            
             
         }
         

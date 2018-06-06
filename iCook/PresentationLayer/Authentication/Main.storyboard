@@ -420,7 +420,7 @@
                                                         <rect key="frame" x="8" y="0.0" width="327" height="35"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -453,7 +453,7 @@
                                                         <rect key="frame" x="8" y="0.0" width="327" height="35"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -486,7 +486,7 @@
                                                         <rect key="frame" x="8" y="0.0" width="327" height="35"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -519,7 +519,7 @@
                                                                 <rect key="frame" x="8" y="0.0" width="134" height="35"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -551,7 +551,7 @@
                                                                 <rect key="frame" x="8" y="0.0" width="134" height="35"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -689,12 +689,17 @@
                     </view>
                     <size key="freeformSize" width="375" height="780"/>
                     <connections>
+                        <outlet property="addressField" destination="MT1-HH-kdl" id="Tag-Nk-3rJ"/>
+                        <outlet property="addressField2" destination="Fqq-rz-dcN" id="1xr-Rt-HOa"/>
+                        <outlet property="cityField" destination="3IF-eU-OkQ" id="eEw-yk-MTP"/>
                         <outlet property="emailField" destination="vqo-Uh-ZZm" id="ttP-1G-vm9"/>
                         <outlet property="firstNameField" destination="uT2-fr-QJo" id="9dy-o7-iXk"/>
                         <outlet property="lastNameField" destination="uCc-Qb-liq" id="Ny2-cr-ubA"/>
                         <outlet property="passwordField" destination="QCZ-cS-eqP" id="cZm-ZK-BDb"/>
                         <outlet property="phoneField" destination="8WV-9y-X0D" id="Q48-Ej-G5o"/>
                         <outlet property="scrollView" destination="6bZ-Hs-uYx" id="wK4-hP-wG4"/>
+                        <outlet property="stateField" destination="vu8-Df-MfS" id="7SB-iK-VKK"/>
+                        <outlet property="zipcodeField" destination="Ugv-cc-xTY" id="oFI-wh-i6X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFQ-gU-uy6" userLabel="First Responder" sceneMemberID="firstResponder"/>

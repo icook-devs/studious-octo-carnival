@@ -14,9 +14,9 @@ protocol shopSetupProtocol {
     func getTodayDish(data: [String: AnyObject]?)
 
 }
-class SellerHomeViewController: UIViewController,shopSetupProtocol {
+class SellerHomeViewController: HomeViewController,shopSetupProtocol {
    
-    @IBOutlet weak var welcomeLabel: UILabel!
+    //@IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var firstSetupView: UIView!
     @IBOutlet weak var dishesTableView: UITableView!
     
@@ -30,7 +30,6 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
         setupTableViews()
         let isKitchenAdded = Util.getBool(.isKitchenAdded)
         firstSetupView.isHidden = isKitchenAdded
-        welcomeLabel.isHidden = true
         ref = Database.database().reference()
 
 //        refHandle = ref.child(FirebaseTable.Dish).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
@@ -41,12 +40,14 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
 
         dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            super.headerViewTitle.text = ("Welcome to Testing")
             if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],
                 let loggedInUser = users[Util.loggedInUserUserID()] as? [String : AnyObject] {
                 if let kitchen = loggedInUser[FirebaseTable.Kitchen] as? [String : String] {
                     let kitchenName = kitchen["Kitchen"] ?? "" as String
-                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
-                    self.welcomeLabel.isHidden = false
+//                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
+//                    self.welcomeLabel.isHidden = false
+                    self.headerViewTitle?.text = ("Welcome to \(kitchenName)")
                 }
                 if let dishesArray = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()
@@ -66,7 +67,7 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
             return
         }
         if let kitchenName = shopDetail["Kitchen"] as? String {
-            welcomeLabel.text = "Welcome to \(kitchenName)"
+            self.headerViewTitle.text = ("Welcome to \(kitchenName)")
         }
         firstSetupView.isHidden = Util.getBool(.isKitchenAdded)
     }
@@ -86,10 +87,23 @@ class SellerHomeViewController: UIViewController,shopSetupProtocol {
     }
     
     @IBAction func addItem(sender: UIButton) {
-        let addDishNavVC = Util.navControllerFrom(storyboard: .addDish, withIdentifier: .addDishNavVC)
-        let addDishViewController = addDishNavVC.viewControllers[0] as? SellerAddDishViewController
-        addDishViewController?.delegate = self
-        self.present(addDishNavVC, animated: true)
+        
+        //TODO# still need to optimize it
+        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
+                                                                     withIdentifier: .homeViewController)
+            as? HomeViewController else {
+                fatalError("No view controller with identifier SellerHomeViewController")
+        }
+        self.present(sellerHomeViewController, animated: true, completion: {
+            sellerHomeViewController.setupHeaderView(.right, buttons:[#imageLiteral(resourceName: "cancel")])
+            sellerHomeViewController.addAsChildViewController(.sellerAddDish)
+            sellerHomeViewController.headerViewTitle.text = "Add Dish"
+        })
+        
+//        let addDishNavVC = Util.navControllerFrom(storyboard: .addDish, withIdentifier: .addDishNavVC)
+//        let addDishViewController = addDishNavVC.viewControllers[0] as? SellerAddDishViewController
+//        addDishViewController?.delegate = self
+//        self.present(addDishNavVC, animated: true)
     }
     
 }

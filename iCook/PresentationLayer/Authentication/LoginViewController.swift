@@ -27,6 +27,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         emailField.text = "sdodigam1@gmail.com" //emailTextField.text ?? ""
         passwordField.text = "samba537" //passwordTextField.text ?? ""
         updateLoginButton()
+//        emailField.text = "sharat.guduru+2@gmail.com" //emailTextField.text ?? ""
+//        passwordField.text = "Abc123" //passwordTextField.text ?? ""
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,12 +124,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
 
     func showHomeScreen() {
-        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .sellerHome,
-                                                                     withIdentifier: .sellerHomeViewController)
-            as? SellerHomeViewController else {
+        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
+                                                                     withIdentifier: .homeViewController)
+            as? HomeViewController else {
                 fatalError("No view controller with identifier SellerHomeViewController")
         }
-        self.navigationController?.present(sellerHomeViewController, animated: true)
+        
+        self.navigationController?.present(sellerHomeViewController, animated: true, completion: {
+            sellerHomeViewController.setupHeaderView(.right,
+                                                     buttons: [#imageLiteral(resourceName: "menu")])
+            sellerHomeViewController.addAsChildViewController(.sellerHome)
+        })
     }
 
     func showAddKitchenVC() {

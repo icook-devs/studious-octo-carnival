@@ -9,7 +9,8 @@
 import UIKit
 import FirebaseDatabase
 
-class SellerAddDishViewController: UIViewController {
+class SellerAddDishViewController: UIViewController,UIAlertViewDelegate,
+UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
 
     let dishName = 300
     let dishStyle = 301
@@ -26,6 +27,13 @@ class SellerAddDishViewController: UIViewController {
     @IBOutlet weak var availbilityField: UITextField!
     
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var addDishView: UIView!
+    @IBOutlet weak var dishImageView: UIImageView!
+    @IBOutlet weak var addDishButton: UIButton!
+    var imagePicker: UIImagePickerController?
+
+
+
     
     var pickerView: UIPickerView?
     var pickerDataSource = ["South Indian", "North Indian"]
@@ -37,7 +45,8 @@ class SellerAddDishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-
+        imagePicker = UIImagePickerController()
+        imagePicker?.delegate = self
         pickerView = UIPickerView()
         pickerView?.delegate = self
         
@@ -52,7 +61,7 @@ class SellerAddDishViewController: UIViewController {
         keyboardToolBar?.setItems([cancelButton, spaceButton, doneButton], animated: false)
         keyboardToolBar?.isUserInteractionEnabled = true
         keyboardToolBar?.sizeToFit()
-        
+        updateImageTitle()
         setupTextFields()
     }
     
@@ -77,6 +86,15 @@ class SellerAddDishViewController: UIViewController {
         priceField.tag = dishPrice
     }
     
+    
+    func updateImageTitle() {
+        let update = dishImageView.image != nil ? true : false
+        if update {
+            self.addDishButton.setTitle("", for: .normal)
+        } else {
+            self.addDishButton.setTitle("Add Dish Image", for: .normal)
+        }
+    }
     @objc
     func donePressed(sender: UIBarButtonItem) {
         let row = self.pickerView?.selectedRow(inComponent: 0) ?? 0
@@ -93,7 +111,33 @@ class SellerAddDishViewController: UIViewController {
     func isValidateEntries() -> Bool {
         return true
     }
-
+    
+    @IBAction func addDishImage(sender: UIButton) {
+        let alert:UIAlertController = UIAlertController(title: "Add Image",
+                                                        message: nil,
+                                                        preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Use Camera", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            
+            self.openCamera()
+        }
+        let galleryAction = UIAlertAction(title: "Use Gallery", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
+        alert.addAction(cameraAction)
+        alert.addAction(galleryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         self.textFieldDidEndEditing(selectedTexfield!)
         self.dismiss(animated: true, completion: nil)
@@ -106,8 +150,25 @@ class SellerAddDishViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelTapped(_ sender: Any) {
+    func cancelTapped(_ sender: UIButton) {
         self.dismiss(animated: true)
+    }
+    
+    func openCamera() {
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)) {
+            imagePicker?.sourceType = .camera;
+            self .present(imagePicker!, animated: true, completion: nil)
+            imagePicker?.allowsEditing = false
+        }
+    }
+    
+    func openGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker?.sourceType = .savedPhotosAlbum;
+            imagePicker?.allowsEditing = false
+            self.present(imagePicker!, animated: true, completion: nil)
+        }
+        
     }
 }
 
@@ -157,4 +218,18 @@ extension SellerAddDishViewController: UIPickerViewDataSource,UIPickerViewDelega
         self.selectedTexfield?.text = pickerDataSource[row]
     }
     
+}
+
+extension SellerAddDishViewController: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        dishImageView.image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
+        self.dismiss(animated: true) { [weak self] in
+            self?.updateImageTitle()
+        }
+    }
 }

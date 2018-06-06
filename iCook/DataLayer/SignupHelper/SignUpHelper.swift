@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 class SignUpHelper: NSObject {
 
     class func isValidPassword(password: String) -> Bool {
@@ -35,6 +35,48 @@ class SignUpHelper: NSObject {
                 print("Error: couldn't validate email: \(error)")
             }
             return false
+        }
+    }
+    
+    class func formatAddress(add:String,
+                             add2:String,
+                             city: String,
+                             state: String,
+                             zip: Int) -> String {
+        
+        var formattedStr:String = ""
+        if !add.isEmpty {
+            formattedStr.append(add + ",")
+        }
+        if !add2.isEmpty {
+            formattedStr.append(add2 + ",")
+        }
+        if !city.isEmpty{
+            formattedStr.append(city + ",")
+        }
+        if !state.isEmpty {
+            formattedStr.append(state + " ")
+        }
+        if zip != 0 {
+            formattedStr.append(String(zip))
+        }
+        
+        return formattedStr
+    }
+    class func getCoordinatesFrom(address:String, completionBlock:@escaping (_ coordinates:CLLocationCoordinate2D?,
+        _ error:Error?) -> Void) {
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if((error) != nil){
+                print("Error", error ?? "")
+                completionBlock(nil, error)
+            }
+            if let placemark = placemarks?.first {
+                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                print("Lat: \(coordinates.latitude) -- Long: \(coordinates.longitude)")
+                completionBlock(coordinates, nil)
+            }
         }
     }
 }

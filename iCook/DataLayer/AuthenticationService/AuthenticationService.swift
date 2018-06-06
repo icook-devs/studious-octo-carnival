@@ -71,7 +71,14 @@ class AuthenticationService: NSObject {
         let userData = ["First Name": userInfo.firstName,
                         "Last Name": userInfo.lastName,
                         "phone": userInfo.phone,
-                        "email": userInfo.email] as AnyObject
+                        "email": userInfo.email,
+                        "Address": userInfo.address,
+                        "Address2": userInfo.address2,
+                        "City": userInfo.city,
+                        "State": userInfo.state,
+                        "ZipCode": userInfo.zipCode,
+                        "latitude": userInfo.latitude,
+                        "Longitude": userInfo.longitude] as AnyObject
         ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.UserInfo).setValue(userData)
     }
 }
