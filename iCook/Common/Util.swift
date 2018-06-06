@@ -15,19 +15,6 @@ class Util: NSObject {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    class func loggedInUser() -> User {
-        guard let user = appDelegate().user else {
-            fatalError("Not logged in to app")
-        }
-        return user
-    }
-    class func loggedInUserUserID() -> String {
-        guard let user = appDelegate().user else {
-            fatalError("Not logged in to app")
-        }
-        return user.uid
-    }
-
     class func loggedInAsBuyyer() -> Bool {
         return appDelegate().loggedInAsBuyyer
     }

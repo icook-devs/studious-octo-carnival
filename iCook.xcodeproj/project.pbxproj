@@ -40,6 +40,7 @@
 		2CFA90AE20C7267F00D58808 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AD20C7267F00D58808 /* Kitchen.swift */; };
 		2CFA90B020C7268B00D58808 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AF20C7268B00D58808 /* Dish.swift */; };
 		2CFA90B220C727D400D58808 /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90B120C727D400D58808 /* Seller.swift */; };
+		2CFA90B820C83B3500D58808 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90B720C83B3500D58808 /* FirebaseUtil.swift */; };
 		5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */; };
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
 		5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3F084720B61F4B003AC6FB /* Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		2CFA90AD20C7267F00D58808 /* Kitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 		2CFA90AF20C7268B00D58808 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		2CFA90B120C727D400D58808 /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
+		2CFA90B720C83B3500D58808 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
 		31555FEFAF395A1530002445 /* Pods-iCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCook/Pods-iCook.debug.xcconfig"; sourceTree = "<group>"; };
 		5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
 		5C3F083D20B61F4B003AC6FB /* iCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +245,7 @@
 				2CFA90AD20C7267F00D58808 /* Kitchen.swift */,
 				2CFA90AF20C7268B00D58808 /* Dish.swift */,
 				2CFA90B120C727D400D58808 /* Seller.swift */,
+				2CFA90B720C83B3500D58808 /* FirebaseUtil.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				2C7E206920BDF1C9009457AB /* UITableView+Extensions.swift in Sources */,
 				5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */,
 				2CFA909120C6FC7F00D58808 /* BuyyerHomeViewController.swift in Sources */,
+				2CFA90B820C83B3500D58808 /* FirebaseUtil.swift in Sources */,
 				2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
 				2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */,

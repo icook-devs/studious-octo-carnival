@@ -144,7 +144,7 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
         if isValidateEntries() == true {
             Util.setValue(true, key: .isKitchenAdded)
             self.delegate?.getTodayDish(data: dishData)
-            let userId = Util.loggedInUser().uid
+            let userId = FirebaseUtil.loggedInUser().uid
             self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Dish).childByAutoId().setValue(dishData)
             self.dismiss(animated: true, completion: nil)
         }

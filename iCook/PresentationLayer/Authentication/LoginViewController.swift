@@ -24,7 +24,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationController()
-        emailField.text = "sdodigam1@gmail.com" //emailTextField.text ?? ""
+        emailField.text = "pranavik@gmail.com" //emailTextField.text ?? ""
         passwordField.text = "samba537" //passwordTextField.text ?? ""
         updateLoginButton()
 //        emailField.text = "sharat.guduru+2@gmail.com" //emailTextField.text ?? ""
@@ -123,6 +123,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.present(buyyerHomeNavVC, animated: true)
     }
 
+    func checkKitchenAddedStatusAndShowSellerScreen() {
+        FirebaseUtil.isKitchenAdded(isAdded: { isAdded in
+            Overlay.hide()
+            if isAdded == true {
+                self.showHomeScreen()
+            } else {
+                self.showAddKitchenVC()
+            }
+        })
+    }
+
     func showHomeScreen() {
         guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
                                                                      withIdentifier: .homeViewController)
@@ -164,17 +175,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                          overlayAlpha: 0.5)
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                 if error == nil {
-                    Util.appDelegate().user = user
                     Util.appDelegate().loggedInAsBuyyer = self.loginInAsSwitch.isOn
-                    Overlay.hide()
                     if self.loginInAsSwitch.isOn == true {
+                        Overlay.hide()
                         self.showBuyyerHomeScreen()
                     } else {
-                        if Util.getBool(.isKitchenAdded) == true {
-                            self.showHomeScreen()
-                        } else {
-                            self.showAddKitchenVC()
-                        }
+                        self.checkKitchenAddedStatusAndShowSellerScreen()
                     }
                 } else {
                     Overlay.hide()
