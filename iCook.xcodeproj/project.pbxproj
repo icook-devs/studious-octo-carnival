@@ -50,6 +50,9 @@
 		5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375520C79DAC00D32FAA /* HomeViewController.swift */; };
 		5CC3375820C79DBD00D32FAA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3375720C79DBD00D32FAA /* Home.storyboard */; };
 		64BDAC5A09FCC24B81F75584 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCCC8D87278434D9FB3F546 /* Pods_iCook.framework */; };
+		6B61261420C85460006953BA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B61261320C85460006953BA /* ProfileViewController.swift */; };
+		6B61261620C85498006953BA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B61261520C85498006953BA /* Profile.storyboard */; };
+		6B61261820C85550006953BA /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B61261720C85550006953BA /* ProfileCell.swift */; };
 		711820D9357F60C9EB4985B9 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */; };
 		E75EEB462B75A84AE17F82DF /* Pods_iCookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */; };
 /* End PBXBuildFile section */
@@ -122,6 +125,9 @@
 		5CC3375220C72E6A00D32FAA /* CB.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CB.jpg; sourceTree = "<group>"; };
 		5CC3375520C79DAC00D32FAA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5CC3375720C79DBD00D32FAA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		6B61261320C85460006953BA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6B61261520C85498006953BA /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		6B61261720C85550006953BA /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8390C268DA59BFBEC5DA2471 /* Pods-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookUITests/Pods-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				5CC3375420C79D9700D32FAA /* Home */,
+				6B61261220C85444006953BA /* Profile */,
 				2CFA907A20C6FC7F00D58808 /* Authentication */,
 				2CFA907F20C6FC7F00D58808 /* Buyyer */,
 				2CFA908220C6FC7F00D58808 /* Seller */,
@@ -350,6 +357,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B61261220C85444006953BA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6B61261320C85460006953BA /* ProfileViewController.swift */,
+				6B61261720C85550006953BA /* ProfileCell.swift */,
+				6B61261520C85498006953BA /* Profile.storyboard */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +483,7 @@
 				2CFA907820C6FC6E00D58808 /* LaunchScreen.storyboard in Resources */,
 				5CC3375820C79DBD00D32FAA /* Home.storyboard in Resources */,
 				2C7E204E20BDBEC1009457AB /* GoogleService-Info.plist in Resources */,
+				6B61261620C85498006953BA /* Profile.storyboard in Resources */,
 				2CFA909020C6FC7F00D58808 /* BuyyerHome.storyboard in Resources */,
 				2CFA909420C6FC7F00D58808 /* DishTableViewCell.xib in Resources */,
 				5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */,
@@ -587,10 +605,12 @@
 				2CFA90AC20C7216200D58808 /* BuyyerHomeViewController+TableView.swift in Sources */,
 				2CFA909620C6FC7F00D58808 /* SellerAddDishViewController.swift in Sources */,
 				2CFA908E20C6FC7F00D58808 /* ResetPasswordViewController.swift in Sources */,
+				6B61261820C85550006953BA /* ProfileCell.swift in Sources */,
 				2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */,
 				5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */,
 				2CFA908F20C6FC7F00D58808 /* SignUpViewController.swift in Sources */,
 				2CFA909320C6FC7F00D58808 /* DishTableViewCell.swift in Sources */,
+				6B61261420C85460006953BA /* ProfileViewController.swift in Sources */,
 				2C7E206920BDF1C9009457AB /* UITableView+Extensions.swift in Sources */,
 				5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */,
 				2CFA909120C6FC7F00D58808 /* BuyyerHomeViewController.swift in Sources */,
