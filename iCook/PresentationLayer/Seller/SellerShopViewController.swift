@@ -166,7 +166,7 @@ class SellerShopViewController: UIViewController {
         if isValidateEntries() == true {
             Util.setValue(true, key: .isKitchenAdded)
             self.delegate?.fetchShopDetails(data: shopData)
-            let userId = Util.loggedInUser().uid
+            let userId = FirebaseUtil.loggedInUser().uid
             self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Kitchen).setValue(shopData)
             self.dismiss(animated: true, completion: nil)
         }

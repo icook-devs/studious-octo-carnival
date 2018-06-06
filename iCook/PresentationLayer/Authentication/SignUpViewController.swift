@@ -134,7 +134,6 @@ class SignUpViewController: UIViewController {
                                                  password: (self?.passwordField.text!)!,
                                                  completion: { (user, error) in
                                                     if user != nil {
-                                                        Util.appDelegate().user = user
                                                         print("user created successfully")
                                                         self?.showHomeScreen()
                                                     } else {

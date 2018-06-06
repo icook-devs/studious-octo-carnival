@@ -39,7 +39,6 @@ class AuthenticationService: NSObject {
             if error == nil,
                 let uObj = user{
                 print("user created successfully")
-                Util.appDelegate().user = user
                 // once user created successfully, create userInfo table in FireBase DB
                 addSellerInfoInFBDB(userInfo: userData!, user: uObj)
                 completion(user, nil)

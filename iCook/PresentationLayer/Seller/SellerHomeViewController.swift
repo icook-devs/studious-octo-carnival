@@ -40,9 +40,8 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
 
         dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-            super.headerViewTitle.text = ("Welcome to Testing")
             if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],
-                let loggedInUser = users[Util.loggedInUserUserID()] as? [String : AnyObject] {
+                let loggedInUser = users[FirebaseUtil.loggedInUserUserID()] as? [String : AnyObject] {
                 if let kitchen = loggedInUser[FirebaseTable.Kitchen] as? [String : String] {
                     let kitchenName = kitchen["Kitchen"] ?? "" as String
 //                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
@@ -67,7 +66,7 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
             return
         }
         if let kitchenName = shopDetail["Kitchen"] as? String {
-            self.headerViewTitle.text = ("Welcome to \(kitchenName)")
+            //self.headerViewTitle.text = ("Welcome to \(kitchenName)")
         }
         firstSetupView.isHidden = Util.getBool(.isKitchenAdded)
     }
