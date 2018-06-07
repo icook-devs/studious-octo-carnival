@@ -32,9 +32,10 @@ class BuyyerHomeViewController: UIViewController {
                         }
                         if let dishes = sellerObject[FirebaseTable.Dish] as? [String : AnyObject] {
                             var disheModels = [Dish]()
-                            for dish in dishes.values {
-                                if let dishDict = dish as? [String: AnyObject] {
-                                    let dishModel = Dish(dishDictory: dishDict)
+                            for (key, value) in dishes {
+                                if let dishDict = value as? [String: AnyObject] {
+                                    let dishModel = Dish(dishDictory: dishDict as [String : AnyObject],
+                                                     dishID: key)
                                     disheModels.append(dishModel)
                                 }
                             }

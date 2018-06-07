@@ -50,8 +50,10 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
                 }
                 if let dishesArray = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()
-                    for dishDict in dishesArray.values {
-                        let dishModel = Dish(dishDictory: dishDict as [String : AnyObject])
+                    for (key, value) in dishesArray {
+                        let dishDict = value
+                        let dishModel = Dish(dishDictory: dishDict as [String : AnyObject],
+                                             dishID: key)
                         self.dishes.append(dishModel)
                     }
                     self.dishesTableView.reloadData()
@@ -87,22 +89,25 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
     
     @IBAction func addItem(sender: UIButton) {
         
-        //TODO# still need to optimize it
-        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
-                                                                     withIdentifier: .homeViewController)
-            as? HomeViewController else {
-                fatalError("No view controller with identifier SellerHomeViewController")
-        }
-        self.present(sellerHomeViewController, animated: true, completion: {
-            sellerHomeViewController.setupHeaderView(.right, buttons:[#imageLiteral(resourceName: "cancel")])
-            sellerHomeViewController.addAsChildViewController(.sellerAddDish)
-            sellerHomeViewController.headerViewTitle.text = "Add Dish"
-        })
-        
-//        let addDishNavVC = Util.navControllerFrom(storyboard: .addDish, withIdentifier: .addDishNavVC)
-//        let addDishViewController = addDishNavVC.viewControllers[0] as? SellerAddDishViewController
-//        addDishViewController?.delegate = self
-//        self.present(addDishNavVC, animated: true)
+        guard let addDishViewController = Util.viewControllerFrom(storyboard: .addDish,
+                                                                         withIdentifier: .addDishNavVC)
+                as? SellerAddDishViewController else {
+            fatalError("No view controller with identifier SellerAddDishViewController")
+            }
+        addDishViewController.delegate = self
+        self.navigationController?.pushViewController(addDishViewController, animated: true)
     }
+    
+//    //TODO# still need to optimize it
+//    guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
+//                                                                 withIdentifier: .homeViewController)
+//        as? HomeViewController else {
+//    fatalError("No view controller with identifier SellerHomeViewController")
+//    }
+//    self.present(sellerHomeViewController, animated: true, completion: {
+//    sellerHomeViewController.setupHeaderView(.right, buttons:[#imageLiteral(resourceName: "cancel")])
+//    sellerHomeViewController.addAsChildViewController(.sellerAddDish)
+//    sellerHomeViewController.headerViewTitle.text = "Add Dish"
+//    })
     
 }

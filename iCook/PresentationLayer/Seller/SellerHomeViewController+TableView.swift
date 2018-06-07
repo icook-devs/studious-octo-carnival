@@ -17,11 +17,6 @@ extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
         dishesTableView.rowHeight = 150
     }
 
-    // MARK: - Table View Row Methods
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dishes.count
     }
@@ -34,8 +29,27 @@ extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.quantityLabel.text = "\(dish.quantity)" + "lb"
         cell.priceLabel.text = "$" + "\(dish.price)"
         cell.dishTypeLabel.text = dish.style
-
+        if let dishImagUrl = dish.dishImageUrl {
+            SellerItemHelper.downloadImageFromURL(urlStr: dishImagUrl, completion: { (img) in
+                cell.dishImageView.image = img
+            })
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dish = dishes[indexPath.row]
+        
+        guard let addDishViewController = Util.viewControllerFrom(storyboard: .addDish,
+                                                                  withIdentifier: .addDishNavVC)
+            as? SellerAddDishViewController else {
+                fatalError("No view controller with identifier SellerAddDishViewController")
+        }
+        addDishViewController.delegate = self
+        addDishViewController.dish = dish
+        addDishViewController.mode = DishViewMode.display
+        self.navigationController?.pushViewController(addDishViewController, animated: true)
+
     }
 }
 

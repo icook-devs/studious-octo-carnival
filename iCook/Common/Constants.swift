@@ -24,6 +24,7 @@ enum StoryboardID: String {
     case kitchenNavVC               = "KitchenNavVC"
     case addDishNavVC               = "AddDishNavVC"
     case sellerHomeViewController   = "SellerHomeViewController"
+    case sellerHomeNavVC            = "sellerHomeNavVC"
     case buyyerHomeNavVC            = "BuyyerHomeNavVC"
     case homeViewController         = "HomeViewController"
 

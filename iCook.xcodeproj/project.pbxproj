@@ -49,6 +49,7 @@
 		5CC3375320C72E6A00D32FAA /* CB.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3375220C72E6A00D32FAA /* CB.jpg */; };
 		5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375520C79DAC00D32FAA /* HomeViewController.swift */; };
 		5CC3375820C79DBD00D32FAA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3375720C79DBD00D32FAA /* Home.storyboard */; };
+		5CC3375A20C8610400D32FAA /* SellerItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375920C8610400D32FAA /* SellerItemHelper.swift */; };
 		64BDAC5A09FCC24B81F75584 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCCC8D87278434D9FB3F546 /* Pods_iCook.framework */; };
 		711820D9357F60C9EB4985B9 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */; };
 		E75EEB462B75A84AE17F82DF /* Pods_iCookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */; };
@@ -122,6 +123,7 @@
 		5CC3375220C72E6A00D32FAA /* CB.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CB.jpg; sourceTree = "<group>"; };
 		5CC3375520C79DAC00D32FAA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5CC3375720C79DBD00D32FAA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		5CC3375920C8610400D32FAA /* SellerItemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerItemHelper.swift; sourceTree = "<group>"; };
 		7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8390C268DA59BFBEC5DA2471 /* Pods-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookUITests/Pods-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +234,7 @@
 				2CFA908A20C6FC7F00D58808 /* SellerHomeViewController.swift */,
 				2CFA908920C6FC7F00D58808 /* SellerHomeViewController+TableView.swift */,
 				2CFA908B20C6FC7F00D58808 /* SellerShopViewController.swift */,
+				5CC3375920C8610400D32FAA /* SellerItemHelper.swift */,
 			);
 			path = Seller;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */,
 				2CFA909120C6FC7F00D58808 /* BuyyerHomeViewController.swift in Sources */,
 				2CFA90B820C83B3500D58808 /* FirebaseUtil.swift in Sources */,
+				5CC3375A20C8610400D32FAA /* SellerItemHelper.swift in Sources */,
 				2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
 				2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */,

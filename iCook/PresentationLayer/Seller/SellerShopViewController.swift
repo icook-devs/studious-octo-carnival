@@ -15,13 +15,13 @@ import FirebaseDatabase
 //    @IBOutlet weak var fieldTextField: UITextField!
 //}
 
-enum PickerOption {
-    case cusineType
-    case timings
-    case foodType
-    case orderType
-    case paymentType
-}
+//enum PickerOption {
+//    case cusineType
+//    case timings
+//    case foodType
+//    case orderType
+//    case paymentType
+//}
 
 
 class SellerShopViewController: UIViewController {
@@ -103,47 +103,6 @@ class SellerShopViewController: UIViewController {
         
     }
     
-    func getPickerDatasource(option: PickerOption) -> [String] {
-        switch option {
-        case .cusineType:
-            return ["South Indian", "North Indian", "Continental", "Any"]
-        case .timings:
-            return ["Lunch", "Dinner", "Lunch And Dinner"]
-        case .foodType:
-            return ["Veg", "Non-veg", "Vegan", "veg And Non-Veg"]
-        case .orderType:
-            return ["Pick-up"]
-        case .paymentType:
-            return ["Cash"]
-        }
-    }
-
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return fieldArray.count
-//    }
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as? ShopCell else {
-//            return ShopCell()
-//        }
-//        cell.fieldLabel.text = fieldArray[indexPath.row]
-//        cell.fieldTextField.tag = 200 + indexPath.row
-//        cell.fieldTextField.delegate = self
-//        if indexPath.row != 0 {
-//            cell.fieldTextField.inputView = pickerView
-//            cell.fieldTextField.inputAccessoryView = keyboardToolBar
-//        }
-//        return cell
-//    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if selectedTexfield != nil {
-//            selectedTexfield?.resignFirstResponder()
-//        }
-//    }
-    
     @objc
     func donePressed(sender: UIBarButtonItem) {
         let row = self.pickerView?.selectedRow(inComponent: 0) ?? 0
@@ -180,15 +139,15 @@ extension SellerShopViewController: UITextFieldDelegate {
         self.selectedTexfield = textField
         switch textField.tag {
         case cuisine:
-            pickerDataSource = getPickerDatasource(option: .cusineType)
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .cusineType)
         case timings:
-            pickerDataSource = getPickerDatasource(option: .timings)
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .timings)
         case food:
-            pickerDataSource = getPickerDatasource(option: .foodType)
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .foodType)
         case order:
-            pickerDataSource = getPickerDatasource(option: .orderType)
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .orderType)
         case payment:
-            pickerDataSource = getPickerDatasource(option: .paymentType)
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .paymentType)
         default:
             break
         }

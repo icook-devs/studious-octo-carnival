@@ -135,16 +135,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
 
     func showHomeScreen() {
-        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
-                                                                     withIdentifier: .homeViewController)
-            as? HomeViewController else {
+        guard let sellerHomeViewController = Util.navControllerFrom(storyboard: .sellerHome,
+                                                                     withIdentifier: .sellerHomeNavVC) as? UINavigationController else {
                 fatalError("No view controller with identifier SellerHomeViewController")
         }
         
         self.navigationController?.present(sellerHomeViewController, animated: true, completion: {
-            sellerHomeViewController.setupHeaderView(.right,
-                                                     buttons: [#imageLiteral(resourceName: "menu")])
-            sellerHomeViewController.addAsChildViewController(.sellerHome)
+//            sellerHomeViewController.setupHeaderView(.right,
+//                                                     buttons: [#imageLiteral(resourceName: "menu")])
+//            sellerHomeViewController.addAsChildViewController(.sellerHome)
         })
     }
 

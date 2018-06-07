@@ -9,6 +9,12 @@
 import UIKit
 import FirebaseDatabase
 
+
+enum DishViewMode {
+    case add
+    case edit
+    case display
+}
 class SellerAddDishViewController: UIViewController,UIAlertViewDelegate,
 UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
 
@@ -16,6 +22,7 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
     let dishStyle = 301
     let dishQuantity = 302
     let dishPrice = 303
+    let availabilityTag = 304
     // add notes
     
     var ref: DatabaseReference!
@@ -30,17 +37,18 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
     @IBOutlet weak var addDishView: UIView!
     @IBOutlet weak var dishImageView: UIImageView!
     @IBOutlet weak var addDishButton: UIButton!
-    var imagePicker: UIImagePickerController?
-
-
+    @IBOutlet weak var barButton: UIBarButtonItem!
 
     
+    var imagePicker: UIImagePickerController?
     var pickerView: UIPickerView?
-    var pickerDataSource = ["South Indian", "North Indian"]
+    var pickerDataSource = [String]()
     var selectedTexfield:UITextField?
     var keyboardToolBar: UIToolbar?
     var delegate:shopSetupProtocol?
     var dishData = [String: AnyObject]()
+    var dish:Dish?
+    var mode = DishViewMode.add as DishViewMode
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +70,8 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
         keyboardToolBar?.isUserInteractionEnabled = true
         keyboardToolBar?.sizeToFit()
         updateImageTitle()
-        setupTextFields()
+        setupTextFields(mode)
+        setupNaviagationbar(mode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +83,44 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
         super.viewWillDisappear(animated)
         scrollView.deRegisterKeyboard()
     }
-    
-    func setupTextFields() {
+    func setupNaviagationbar(_ forType:DishViewMode) {
+        switch forType {
+        case .add:
+            barButton.title = "Save"
+            self.navigationItem.hidesBackButton = true
+        case .edit:
+            barButton.title = "Update"
+            self.navigationItem.hidesBackButton = true
+        case .display:
+            barButton.title = "Edit"
+            self.navigationItem.hidesBackButton = false
+        }
+        self.navigationController?.navigationBar.tintColor = .white
+    }
+    func setupTextFields(_ forType:DishViewMode) {
+        
+        switch forType {
+        case .add:
+            dishNameField.text = ""
+            dishStyleField.text = ""
+            quantityField.text = ""
+            priceField.text = ""
+            availbilityField.text = ""
+        case .edit: break
+        case .display:
+            dishNameField.text = self.dish?.name
+            dishStyleField.text = self.dish?.style
+            quantityField.text = "\(String(describing: self.dish?.price ?? 0))"
+            priceField.text = "\(String(describing: self.dish?.price ?? 0))"
+            availbilityField.text = self.dish?.availability
+            if let dishImagUrl = self.dish?.dishImageUrl {
+                SellerItemHelper.downloadImageFromURL(urlStr: dishImagUrl, completion: {[weak self] (img) in
+                    self?.dishImageView.image = img
+                    self?.updateImageTitle()
+                })
+            }
+        }
+        
         dishNameField.tag = dishName
         
         dishStyleField.tag = dishStyle
@@ -84,6 +129,10 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
         
         quantityField.tag = dishQuantity
         priceField.tag = dishPrice
+        
+        availbilityField.tag = availabilityTag
+        availbilityField.inputView = pickerView
+        availbilityField.inputAccessoryView = keyboardToolBar
     }
     
     
@@ -139,15 +188,20 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        self.textFieldDidEndEditing(selectedTexfield!)
-        self.dismiss(animated: true, completion: nil)
-        if isValidateEntries() == true {
-            Util.setValue(true, key: .isKitchenAdded)
-            self.delegate?.getTodayDish(data: dishData)
+        
+    }
+    
+    func saveImageAndUpdateDB(key: String) {
+        FirebaseUtil.uploadMedia(key, image: dishImageView.image!, completion: { (imageUrl) in
+            guard let imgUrlStr = imageUrl else {
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
+            self.dishData["DishImage"] = imgUrlStr as AnyObject
             let userId = FirebaseUtil.loggedInUser().uid
-            self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Dish).childByAutoId().setValue(dishData)
-            self.dismiss(animated: true, completion: nil)
-        }
+            self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Dish).child(key).setValue(self.dishData)
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func cancelTapped(_ sender: UIButton) {
@@ -170,12 +224,58 @@ UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
         }
         
     }
+    @IBAction func rightBarButtonTapped(_ sender: UIBarButtonItem) {
+        if sender.title == "Edit" {
+            mode = .edit
+            setupNaviagationbar(mode)
+        } else if sender.title == "Update" {
+            self.textFieldDidEndEditing(selectedTexfield!)
+            updateDishToFBDB((self.dish?.dishId)!)
+        } else {
+            self.textFieldDidEndEditing(selectedTexfield!)
+            addDishToFBDB()
+        }
+    }
+    
+    
+    //MARK: Class Funtions
+    
+    func addDishToFBDB() {
+        if isValidateEntries() == true {
+            Util.setValue(true, key: .isKitchenAdded)
+            self.delegate?.getTodayDish(data: dishData)
+            let userId = FirebaseUtil.loggedInUser().uid
+            let DBRef =  self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Dish).childByAutoId()
+            DBRef.setValue(self.dishData)
+            let childKey = DBRef.key
+            saveImageAndUpdateDB(key: childKey)
+        }
+    }
+    
+    func updateDishToFBDB(_ forDishId:String) {
+        if isValidateEntries() == true {
+            self.delegate?.getTodayDish(data: dishData)
+            saveImageAndUpdateDB(key: forDishId)
+        }
+    }
 }
 
 extension SellerAddDishViewController: UITextFieldDelegate {
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if mode == .display {
+            return false
+        }
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTexfield = textField
+        if textField == dishStyleField {
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .cusineType)
+        } else if textField == availbilityField {
+            pickerDataSource = SellerItemHelper.getPickerDatasource(option: .availablityType)
+        }
         textField.keyboardType = textField.tag > 301 ? .numberPad : .alphabet
     }
 
@@ -189,6 +289,8 @@ extension SellerAddDishViewController: UITextFieldDelegate {
             dishData["Quantity"] = textField.text as AnyObject
         case dishPrice:
             dishData["Pricing"] = textField.text as AnyObject
+        case availabilityTag:
+            dishData["Availability"] = textField.text as AnyObject
         default:
             break
         }
@@ -227,7 +329,9 @@ extension SellerAddDishViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
-        dishImageView.image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
+        let image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
+        dishImageView.image = SellerItemHelper.resizeImage(image: image!,
+                                                           targetSize: CGSize(width: 100, height: 100))
         self.dismiss(animated: true) { [weak self] in
             self?.updateImageTitle()
         }

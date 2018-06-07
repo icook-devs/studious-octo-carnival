@@ -18,8 +18,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H3j-La-m4f">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nfm-Tx-3lk" kind="relationship" relationship="rootViewController" id="PrN-aK-VUn"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiH-Q5-2TL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -366,10 +370,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiw-MQ-T44">
-                                <rect key="frame" x="0.0" y="20" width="375" height="823"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="779"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56u-JJ-xr1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="843"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="779"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-ZQ-WWS">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -422,7 +426,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="uI0-SO-bEy" id="R0D-Lx-SfY"/>
+                                                            <outlet property="delegate" destination="nfm-Tx-3lk" id="emB-bp-8uz"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -456,7 +460,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="uI0-SO-bEy" id="9nE-Yk-MNd"/>
+                                                            <outlet property="delegate" destination="nfm-Tx-3lk" id="JC8-Ed-Klu"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -490,7 +494,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="uI0-SO-bEy" id="ZRk-wT-qdi"/>
+                                                            <outlet property="delegate" destination="nfm-Tx-3lk" id="V93-pU-i19"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -524,7 +528,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="uI0-SO-bEy" id="9FM-gp-kkD"/>
+                                                            <outlet property="delegate" destination="nfm-Tx-3lk" id="S8S-j7-DiG"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -558,7 +562,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="uI0-SO-bEy" id="BwR-s2-XfM"/>
+                                                            <outlet property="delegate" destination="nfm-Tx-3lk" id="UiR-UR-mJC"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -593,7 +597,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="uI0-SO-bEy" id="kFk-Qb-Nxc"/>
+                                                            <outlet property="delegate" destination="nfm-Tx-3lk" id="pWX-UA-2Wu"/>
                                                         </connections>
                                                     </textView>
                                                 </subviews>
@@ -607,18 +611,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAO-02-elW">
-                                                <rect key="frame" x="16" y="747" width="343" height="44"/>
-                                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="e2y-Aw-pvl"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <state key="normal" title="SAVE DISH"/>
-                                                <connections>
-                                                    <action selector="saveButtonTappedWithSender:" destination="nfm-Tx-3lk" eventType="touchUpInside" id="KA3-T2-GOE"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -630,12 +622,11 @@
                                             <constraint firstItem="FNc-ZQ-WWS" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" id="7L2-bg-Oa4"/>
                                             <constraint firstItem="it6-OQ-TmU" firstAttribute="top" secondItem="WS1-zR-7RL" secondAttribute="bottom" constant="20" id="7Ns-tX-7ua"/>
                                             <constraint firstAttribute="trailing" secondItem="7fw-xg-BRO" secondAttribute="trailing" constant="16" id="80x-xJ-Vx2"/>
-                                            <constraint firstItem="MAO-02-elW" firstAttribute="top" secondItem="U4h-rv-aq6" secondAttribute="bottom" constant="20" id="8E0-QS-kCh"/>
                                             <constraint firstItem="IXJ-VB-R9W" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="93E-zL-AK7"/>
                                             <constraint firstItem="7fw-xg-BRO" firstAttribute="top" secondItem="it6-OQ-TmU" secondAttribute="bottom" id="9Cb-uH-1fL"/>
                                             <constraint firstItem="781-78-HdU" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="Eac-nH-yVW"/>
                                             <constraint firstItem="vD7-R2-N67" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="Ga9-zB-CH9"/>
-                                            <constraint firstAttribute="height" constant="843" id="HzF-ha-aaQ"/>
+                                            <constraint firstAttribute="height" constant="779" id="HzF-ha-aaQ"/>
                                             <constraint firstItem="8wE-nZ-t56" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="IKy-4j-q58"/>
                                             <constraint firstItem="6uJ-rc-Yy9" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="IqY-Gd-C6U"/>
                                             <constraint firstItem="WS1-zR-7RL" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="JMf-2s-311"/>
@@ -648,13 +639,11 @@
                                             <constraint firstAttribute="trailing" secondItem="6uJ-rc-Yy9" secondAttribute="trailing" constant="16" id="XAT-lz-fHQ"/>
                                             <constraint firstItem="WS1-zR-7RL" firstAttribute="top" secondItem="8wE-nZ-t56" secondAttribute="bottom" id="cCn-d0-hDb"/>
                                             <constraint firstItem="it6-OQ-TmU" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="cUu-xg-saS"/>
-                                            <constraint firstItem="MAO-02-elW" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="dWl-46-Lxg"/>
                                             <constraint firstAttribute="trailing" secondItem="WS1-zR-7RL" secondAttribute="trailing" constant="16" id="e6s-oF-8TA"/>
                                             <constraint firstAttribute="trailing" secondItem="Byf-0T-uY9" secondAttribute="trailing" constant="16" id="h5B-nq-jlO"/>
                                             <constraint firstItem="U4h-rv-aq6" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="hBL-2i-vwf"/>
                                             <constraint firstItem="U4h-rv-aq6" firstAttribute="top" secondItem="tzs-LC-guy" secondAttribute="bottom" id="hd7-0c-Eiq"/>
                                             <constraint firstItem="8wE-nZ-t56" firstAttribute="top" secondItem="FNc-ZQ-WWS" secondAttribute="bottom" constant="16" id="jZB-eF-G05"/>
-                                            <constraint firstAttribute="trailing" secondItem="MAO-02-elW" secondAttribute="trailing" constant="16" id="lEf-DR-359"/>
                                             <constraint firstItem="Byf-0T-uY9" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="lLb-UQ-gqy"/>
                                             <constraint firstItem="tzs-LC-guy" firstAttribute="leading" secondItem="56u-JJ-xr1" secondAttribute="leading" constant="16" id="lMW-FI-wXZ"/>
                                             <constraint firstItem="vKW-2g-lUb" firstAttribute="top" secondItem="vD7-R2-N67" secondAttribute="bottom" constant="20" id="qua-Yl-yxA"/>
@@ -689,12 +678,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MOz-yW-hZW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="18a-r3-POQ"/>
+                    <navigationItem key="navigationItem" id="18a-r3-POQ">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="jIS-bF-qcR">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="rightBarButtonTapped:" destination="nfm-Tx-3lk" id="Xeb-4a-w5K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="843"/>
                     <connections>
                         <outlet property="addDishButton" destination="QHx-qN-lsz" id="ltM-Z0-IUp"/>
                         <outlet property="addDishView" destination="FNc-ZQ-WWS" id="3hI-my-0nT"/>
                         <outlet property="availbilityField" destination="gtv-jw-vQA" id="cR7-uT-A1d"/>
+                        <outlet property="barButton" destination="jIS-bF-qcR" id="ft2-RN-X8t"/>
                         <outlet property="dishImageView" destination="jGb-6C-kK4" id="RK7-U3-aFs"/>
                         <outlet property="dishNameField" destination="92z-fH-9mx" id="83Q-aG-vpD"/>
                         <outlet property="dishStyleField" destination="yT0-lN-Npg" id="RCD-Z5-aG7"/>

@@ -13,6 +13,9 @@ class Dish: NSObject {
     var style: String = ""
     var price: Float = 0.0
     var quantity: Int = 0
+    var dishImageUrl: String? = nil
+    var dishId:String = ""
+    var availability:String?
 
     init(name: String, style: String, price: Float, quantity: Int) {
         self.name = name
@@ -21,13 +24,16 @@ class Dish: NSObject {
         self.quantity = quantity
     }
 
-    init(dishDictory: [String: AnyObject]) {
+    init(dishDictory: [String: AnyObject], dishID:String) {
+        self.dishId = dishID
         self.name = dishDictory["Name"] as? String ?? ""
         self.style = dishDictory["Style"] as? String ?? ""
         let price = dishDictory["Pricing"] as? String ?? "0.0"
         self.price = Float(price)!
         let quantity = dishDictory["Quantity"] as? String ?? "0"
         self.quantity = Int(quantity)!
+        self.availability = dishDictory["Availability"] as? String
+        self.dishImageUrl = dishDictory["DishImage"] as? String
     }
 
 }
