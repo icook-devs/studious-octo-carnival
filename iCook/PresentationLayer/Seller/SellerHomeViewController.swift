@@ -32,12 +32,6 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
         firstSetupView.isHidden = isKitchenAdded
         ref = Database.database().reference()
 
-//        refHandle = ref.child(FirebaseTable.Dish).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
-//            guard let strongSelf = self else { return }
-//            strongSelf.dishes.append(snapshot)
-//            strongSelf.dishesTableView.insertRows(at: [IndexPath(row: strongSelf.dishes.count-1, section: 0)], with: .automatic)
-//        })
-
         dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
             if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],

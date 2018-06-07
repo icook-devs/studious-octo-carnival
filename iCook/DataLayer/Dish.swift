@@ -16,6 +16,7 @@ class Dish: NSObject {
     var dishImageUrl: String? = nil
     var dishId:String = ""
     var availability:String?
+    var isAddedToOder = false
 
     init(name: String, style: String, price: Float, quantity: Int) {
         self.name = name
@@ -34,6 +35,14 @@ class Dish: NSObject {
         self.quantity = Int(quantity)!
         self.availability = dishDictory["Availability"] as? String
         self.dishImageUrl = dishDictory["DishImage"] as? String
+    }
+
+    func getPriceString() -> String {
+        return "$" + "\(self.price)"
+    }
+
+    func getQuantityString() -> String {
+        return "\(self.quantity)" + "lb"
     }
 
 }
