@@ -11,7 +11,7 @@ import UIKit
 extension BuyyerHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func setupTableViews() {
         // Register the Cells using the NibLoadableView Protocol
-        dishesTableView.register(DishTableViewCell.self)
+        dishesTableView.register(BuyyerDishTableViewCell.self)
         dishesTableView.estimatedRowHeight =  UITableViewAutomaticDimension
         dishesTableView.rowHeight = 150
     }
@@ -31,14 +31,28 @@ extension BuyyerHomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueResuableCell(withClass: DishTableViewCell.self)
-        cell.setupCell()
+        let cell = tableView.dequeueResuableCell(withClass: BuyyerDishTableViewCell.self)
         let seller = sellers[indexPath.section]
         let dish = seller.dishes[indexPath.row]
-        cell.nameLabel.text = dish.name
-        cell.quantityLabel.text = "\(dish.quantity)" + "lb"
-        cell.priceLabel.text = "$" + "\(dish.price)"
-        cell.dishTypeLabel.text = dish.style
+        cell.configureCell(dish: dish,
+                           addToOrderAction: {
+                            let isAddedToOder = dish.isAddedToOder
+                            dish.isAddedToOder = !isAddedToOder
+                            cell.setOrderButtonTitleAndColor(!isAddedToOder)
+        })
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let seller = sellers[indexPath.section]
+        let dish = seller.dishes[indexPath.row]
+        guard let buyyerDetailVC = Util.viewControllerFrom(storyboard: .buyyerDishDetail,
+                                                     withIdentifier: .buyyerDishDetailVC)
+            as? BuyyerDishDetailViewController else {
+                fatalError("No view controller with identifier BuyyerDishDetailViewController")
+        }
+        buyyerDetailVC.dish = dish
+        buyyerDetailVC.seller = seller
+        self.navigationController?.pushViewController(buyyerDetailVC, animated: true)
     }
 }

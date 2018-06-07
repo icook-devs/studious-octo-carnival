@@ -24,7 +24,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationController()
-        emailField.text = "pranavik@gmail.com" //emailTextField.text ?? ""
+        emailField.text = "pranavik1@gmail.com" //emailTextField.text ?? ""
         passwordField.text = "samba537" //passwordTextField.text ?? ""
         updateLoginButton()
 //        emailField.text = "sharat.guduru+2@gmail.com" //emailTextField.text ?? ""

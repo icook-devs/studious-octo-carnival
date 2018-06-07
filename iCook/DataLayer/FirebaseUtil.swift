@@ -71,4 +71,40 @@ class FirebaseUtil: NSObject {
             
         }
     }
+
+    //MARK: - Dish Utlitiy methods
+    class func getSellersForBuyyer(sellers: @escaping ([Seller]) -> ()) {
+        var sellersArray = [Seller]()
+        let ref = Database.database().reference()
+        let _ = ref.observe(.value, with: { (snapshot) in
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            if let sellersFireBaseArray = postDict[FirebaseTable.Seller] as? [String : AnyObject] {
+                for seller in sellersFireBaseArray.values {
+                    let sellerModel = Seller()
+                    if let sellerObject = seller as? [String: AnyObject] {
+                        if let kitchenDict = sellerObject[FirebaseTable.Kitchen] as? [String: AnyObject] {
+                            sellerModel.kitchen = Kitchen(kitchenDictory: kitchenDict)
+                        }
+                        if let userInfoDict = sellerObject[FirebaseTable.UserInfo] as? [String: AnyObject] {
+                            sellerModel.userInfo = UserInfo(userInfoDict: userInfoDict)
+                        }
+                        if let dishes = sellerObject[FirebaseTable.Dish] as? [String : AnyObject] {
+                            var disheModels = [Dish]()
+                            for (key, value) in dishes {
+                                if let dishDict = value as? [String: AnyObject] {
+                                    let dishModel = Dish(dishDictory: dishDict as [String : AnyObject],
+                                                         dishID: key)
+                                    disheModels.append(dishModel)
+                                }
+                            }
+                            sellerModel.dishes = disheModels
+                        }
+                        sellersArray.append(sellerModel)
+                    }
+                }
+                NSLog("\(sellersArray)")
+                sellers(sellersArray)
+            }
+        })
+    }
 }

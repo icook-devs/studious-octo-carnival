@@ -15,6 +15,9 @@
 		2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */; };
 		2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */; };
 		2C7E206920BDF1C9009457AB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */; };
+		2CE47F1320C9882B000214B0 /* BuyyerDishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */; };
+		2CE47F1520C98841000214B0 /* BuyyerDishDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */; };
+		2CE47F1720C9AD44000214B0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */; };
 		2CFA907820C6FC6E00D58808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA907720C6FC6E00D58808 /* LaunchScreen.storyboard */; };
 		2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA907B20C6FC7F00D58808 /* LoginViewController.swift */; };
 		2CFA908D20C6FC7F00D58808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA907C20C6FC7F00D58808 /* Main.storyboard */; };
@@ -40,6 +43,8 @@
 		2CFA90AE20C7267F00D58808 /* Kitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AD20C7267F00D58808 /* Kitchen.swift */; };
 		2CFA90B020C7268B00D58808 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90AF20C7268B00D58808 /* Dish.swift */; };
 		2CFA90B220C727D400D58808 /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90B120C727D400D58808 /* Seller.swift */; };
+		2CFA90B520C831FF00D58808 /* BuyyerDishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90B320C831FF00D58808 /* BuyyerDishTableViewCell.swift */; };
+		2CFA90B620C831FF00D58808 /* BuyyerDishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA90B420C831FF00D58808 /* BuyyerDishTableViewCell.xib */; };
 		2CFA90B820C83B3500D58808 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA90B720C83B3500D58808 /* FirebaseUtil.swift */; };
 		5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */; };
 		5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F084020B61F4B003AC6FB /* AppDelegate.swift */; };
@@ -82,6 +87,9 @@
 		2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Util+UserDefaults.swift"; sourceTree = "<group>"; };
 		2C7E205D20BDC5FB009457AB /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerDishDetailViewController.swift; sourceTree = "<group>"; };
+		2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyyerDishDetail.storyboard; sourceTree = "<group>"; };
+		2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2CFA907720C6FC6E00D58808 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CFA907B20C6FC7F00D58808 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2CFA907C20C6FC7F00D58808 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +115,8 @@
 		2CFA90AD20C7267F00D58808 /* Kitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen.swift; sourceTree = "<group>"; };
 		2CFA90AF20C7268B00D58808 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		2CFA90B120C727D400D58808 /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
+		2CFA90B320C831FF00D58808 /* BuyyerDishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerDishTableViewCell.swift; sourceTree = "<group>"; };
+		2CFA90B420C831FF00D58808 /* BuyyerDishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyyerDishTableViewCell.xib; sourceTree = "<group>"; };
 		2CFA90B720C83B3500D58808 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
 		31555FEFAF395A1530002445 /* Pods-iCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCook/Pods-iCook.debug.xcconfig"; sourceTree = "<group>"; };
 		5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 				2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */,
 				2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */,
 				5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */,
+				2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */,
 				2CFA90A620C6FF3B00D58808 /* OverLay */,
 			);
 			path = Common;
@@ -218,6 +229,10 @@
 				2CFA908020C6FC7F00D58808 /* BuyyerHome.storyboard */,
 				2CFA908120C6FC7F00D58808 /* BuyyerHomeViewController.swift */,
 				2CFA90AB20C7216200D58808 /* BuyyerHomeViewController+TableView.swift */,
+				2CFA90B320C831FF00D58808 /* BuyyerDishTableViewCell.swift */,
+				2CFA90B420C831FF00D58808 /* BuyyerDishTableViewCell.xib */,
+				2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */,
+				2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */,
 			);
 			path = Buyyer;
 			sourceTree = "<group>";
@@ -474,8 +489,10 @@
 				5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */,
 				2CFA90AA20C6FF3B00D58808 /* OverlayView.xib in Resources */,
 				5CC3375320C72E6A00D32FAA /* CB.jpg in Resources */,
+				2CFA90B620C831FF00D58808 /* BuyyerDishTableViewCell.xib in Resources */,
 				2CFA908D20C6FC7F00D58808 /* Main.storyboard in Resources */,
 				2CFA909520C6FC7F00D58808 /* Kitchen.storyboard in Resources */,
+				2CE47F1520C98841000214B0 /* BuyyerDishDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,9 +621,12 @@
 				2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */,
 				2CFA90A120C6FC8A00D58808 /* AuthenticationService.swift in Sources */,
 				2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */,
+				2CE47F1720C9AD44000214B0 /* UIColor+Extension.swift in Sources */,
+				2CFA90B520C831FF00D58808 /* BuyyerDishTableViewCell.swift in Sources */,
 				2CFA909920C6FC7F00D58808 /* SellerHomeViewController.swift in Sources */,
 				2C7E205920BDC294009457AB /* Constants.swift in Sources */,
 				2CFA90B220C727D400D58808 /* Seller.swift in Sources */,
+				2CE47F1320C9882B000214B0 /* BuyyerDishDetailViewController.swift in Sources */,
 				2CFA90A320C6FC8A00D58808 /* UserInfo.swift in Sources */,
 				2CFA90AE20C7267F00D58808 /* Kitchen.swift in Sources */,
 				2CFA90A220C6FC8A00D58808 /* SignUpHelper.swift in Sources */,
