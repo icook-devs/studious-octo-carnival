@@ -18,6 +18,13 @@
 		2CE47F1320C9882B000214B0 /* BuyyerDishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */; };
 		2CE47F1520C98841000214B0 /* BuyyerDishDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */; };
 		2CE47F1720C9AD44000214B0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */; };
+		2CE47F1920CAA608000214B0 /* BuyyerSelectedDishes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F1820CAA608000214B0 /* BuyyerSelectedDishes.storyboard */; };
+		2CE47F1B20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1A20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift */; };
+		2CE47F1D20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1C20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift */; };
+		2CE47F2420CAABCF000214B0 /* SelectedDishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F2220CAABCF000214B0 /* SelectedDishTableViewCell.xib */; };
+		2CE47F2520CAABCF000214B0 /* SelectedDishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F2320CAABCF000214B0 /* SelectedDishTableViewCell.swift */; };
+		2CE47F2720CAB25B000214B0 /* BuyyerTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F2620CAB25B000214B0 /* BuyyerTableHeaderView.swift */; };
+		2CE47F2D20CAB5DB000214B0 /* BuyyerTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F2C20CAB5DB000214B0 /* BuyyerTableHeaderView.xib */; };
 		2CFA907820C6FC6E00D58808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA907720C6FC6E00D58808 /* LaunchScreen.storyboard */; };
 		2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA907B20C6FC7F00D58808 /* LoginViewController.swift */; };
 		2CFA908D20C6FC7F00D58808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA907C20C6FC7F00D58808 /* Main.storyboard */; };
@@ -90,6 +97,13 @@
 		2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerDishDetailViewController.swift; sourceTree = "<group>"; };
 		2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyyerDishDetail.storyboard; sourceTree = "<group>"; };
 		2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2CE47F1820CAA608000214B0 /* BuyyerSelectedDishes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyyerSelectedDishes.storyboard; sourceTree = "<group>"; };
+		2CE47F1A20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerSelectedDishesViewController.swift; sourceTree = "<group>"; };
+		2CE47F1C20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuyyerSelectedDishesViewController+TableView.swift"; sourceTree = "<group>"; };
+		2CE47F2220CAABCF000214B0 /* SelectedDishTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedDishTableViewCell.xib; sourceTree = "<group>"; };
+		2CE47F2320CAABCF000214B0 /* SelectedDishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDishTableViewCell.swift; sourceTree = "<group>"; };
+		2CE47F2620CAB25B000214B0 /* BuyyerTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerTableHeaderView.swift; sourceTree = "<group>"; };
+		2CE47F2C20CAB5DB000214B0 /* BuyyerTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyyerTableHeaderView.xib; sourceTree = "<group>"; };
 		2CFA907720C6FC6E00D58808 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CFA907B20C6FC7F00D58808 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2CFA907C20C6FC7F00D58808 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -229,10 +243,17 @@
 				2CFA908020C6FC7F00D58808 /* BuyyerHome.storyboard */,
 				2CFA908120C6FC7F00D58808 /* BuyyerHomeViewController.swift */,
 				2CFA90AB20C7216200D58808 /* BuyyerHomeViewController+TableView.swift */,
+				2CE47F2620CAB25B000214B0 /* BuyyerTableHeaderView.swift */,
+				2CE47F2C20CAB5DB000214B0 /* BuyyerTableHeaderView.xib */,
 				2CFA90B320C831FF00D58808 /* BuyyerDishTableViewCell.swift */,
 				2CFA90B420C831FF00D58808 /* BuyyerDishTableViewCell.xib */,
 				2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */,
 				2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */,
+				2CE47F1A20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift */,
+				2CE47F1C20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift */,
+				2CE47F1820CAA608000214B0 /* BuyyerSelectedDishes.storyboard */,
+				2CE47F2320CAABCF000214B0 /* SelectedDishTableViewCell.swift */,
+				2CE47F2220CAABCF000214B0 /* SelectedDishTableViewCell.xib */,
 			);
 			path = Buyyer;
 			sourceTree = "<group>";
@@ -481,12 +502,15 @@
 			files = (
 				2CFA909720C6FC7F00D58808 /* SellerHome.storyboard in Resources */,
 				2CFA909220C6FC7F00D58808 /* AddDish.storyboard in Resources */,
+				2CE47F2420CAABCF000214B0 /* SelectedDishTableViewCell.xib in Resources */,
 				2CFA907820C6FC6E00D58808 /* LaunchScreen.storyboard in Resources */,
 				5CC3375820C79DBD00D32FAA /* Home.storyboard in Resources */,
 				2C7E204E20BDBEC1009457AB /* GoogleService-Info.plist in Resources */,
 				2CFA909020C6FC7F00D58808 /* BuyyerHome.storyboard in Resources */,
 				2CFA909420C6FC7F00D58808 /* DishTableViewCell.xib in Resources */,
+				2CE47F1920CAA608000214B0 /* BuyyerSelectedDishes.storyboard in Resources */,
 				5C3F084820B61F4B003AC6FB /* Assets.xcassets in Resources */,
+				2CE47F2D20CAB5DB000214B0 /* BuyyerTableHeaderView.xib in Resources */,
 				2CFA90AA20C6FF3B00D58808 /* OverlayView.xib in Resources */,
 				5CC3375320C72E6A00D32FAA /* CB.jpg in Resources */,
 				2CFA90B620C831FF00D58808 /* BuyyerDishTableViewCell.xib in Resources */,
@@ -605,19 +629,23 @@
 				2C7E205720BDC254009457AB /* Util.swift in Sources */,
 				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,
 				2CFA90AC20C7216200D58808 /* BuyyerHomeViewController+TableView.swift in Sources */,
+				2CE47F1D20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift in Sources */,
 				2CFA909620C6FC7F00D58808 /* SellerAddDishViewController.swift in Sources */,
 				2CFA908E20C6FC7F00D58808 /* ResetPasswordViewController.swift in Sources */,
 				2C7E205620BDC254009457AB /* Util+UIAlertController.swift in Sources */,
 				5C34BD7020BE61C400AE6A72 /* ScrollView+Extension.swift in Sources */,
 				2CFA908F20C6FC7F00D58808 /* SignUpViewController.swift in Sources */,
 				2CFA909320C6FC7F00D58808 /* DishTableViewCell.swift in Sources */,
+				2CE47F2720CAB25B000214B0 /* BuyyerTableHeaderView.swift in Sources */,
 				2C7E206920BDF1C9009457AB /* UITableView+Extensions.swift in Sources */,
 				5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */,
 				2CFA909120C6FC7F00D58808 /* BuyyerHomeViewController.swift in Sources */,
 				2CFA90B820C83B3500D58808 /* FirebaseUtil.swift in Sources */,
+				2CE47F1B20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift in Sources */,
 				5CC3375A20C8610400D32FAA /* SellerItemHelper.swift in Sources */,
 				2C7E205E20BDC5FC009457AB /* UIApplication+Extension.swift in Sources */,
 				5C3F084120B61F4B003AC6FB /* AppDelegate.swift in Sources */,
+				2CE47F2520CAABCF000214B0 /* SelectedDishTableViewCell.swift in Sources */,
 				2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */,
 				2CFA90A120C6FC8A00D58808 /* AuthenticationService.swift in Sources */,
 				2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */,

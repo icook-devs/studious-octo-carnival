@@ -17,6 +17,7 @@ enum Storyboard: String {
     case buyyerHome                 = "BuyyerHome"
     case home                       = "Home"
     case buyyerDishDetail           = "BuyyerDishDetail"
+    case buyyerSelectedDishes       = "BuyyerSelectedDishes"
 }
 
 // Storyboard viewController identifier
@@ -29,6 +30,7 @@ enum StoryboardID: String {
     case buyyerHomeNavVC            = "BuyyerHomeNavVC"
     case homeViewController         = "HomeViewController"
     case buyyerDishDetailVC         = "BuyyerDishDetailViewController"
+    case buyyerSelectedDishesVC     = "BuyyerSelectedDishesViewController"
 }
 
 // UserDefaults
