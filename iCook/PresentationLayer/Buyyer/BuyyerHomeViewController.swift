@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class BuyyerHomeViewController: UIViewController {
+class BuyyerHomeViewController: BaseViewController {
 
     @IBOutlet weak var dishesTableView: UITableView!
     var ref: DatabaseReference!
@@ -26,7 +26,6 @@ class BuyyerHomeViewController: UIViewController {
             self.dishesTableView.reloadData()
             Overlay.hide()
         })
-        self.navigationItem.rightBarButtonItem = nil
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +33,7 @@ class BuyyerHomeViewController: UIViewController {
         self.checkAndShowOrHideNextButton()
     }
 
-    @objc func nextBarButtonItemTapped() {
+    func nextTapped(_ sender: AnyObject) {
         guard let selectedDishesVC = Util.viewControllerFrom(storyboard: .buyyerSelectedDishes,
                                                        withIdentifier: .buyyerSelectedDishesVC)
             as? BuyyerSelectedDishesViewController else {
@@ -44,15 +43,17 @@ class BuyyerHomeViewController: UIViewController {
         self.navigationController?.pushViewController(selectedDishesVC, animated: true)
     }
 
-    func nextBarButtonItem() -> UIBarButtonItem {
-        let barButtonItem = UIBarButtonItem(title: "Next",
-                                            style: .done,
-                                            target: self,
-                                            action: #selector(nextBarButtonItemTapped))
-        return barButtonItem
-    }
+//    func nextBarButtonItem() -> UIBarButtonItem {
+//        let barButtonItem = UIBarButtonItem(title: "Next",
+//                                            style: .done,
+//                                            target: self,
+//                                            action: #selector(nextBarButtonItemTapped))
+//        return barButtonItem
+//    }
+    
 
     func checkAndShowOrHideNextButton() {
+        let nextButton = navigationItem.rightBarButtonItems?.last
         var isSelectedDishes = false
         for seller in sellers {
             let selectedDishes = seller.dishes.filter() { $0.isAddedToOder == true }
@@ -61,6 +62,13 @@ class BuyyerHomeViewController: UIViewController {
                 break
             }
         }
-        self.navigationItem.rightBarButtonItem = isSelectedDishes ? nextBarButtonItem() : nil
+        
+        if isSelectedDishes {
+            nextButton?.isEnabled = true
+            nextButton?.title = "Next"
+        } else {
+            nextButton?.isEnabled = false
+            nextButton?.title = nil
+        }
     }
 }

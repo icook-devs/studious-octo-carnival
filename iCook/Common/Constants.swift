@@ -33,6 +33,20 @@ enum StoryboardID: String {
     case buyyerSelectedDishesVC     = "BuyyerSelectedDishesViewController"
 }
 
+// MARK: Menu View Constants
+struct MenuView {
+    static let homeTitle           = "Home"
+    static let sellerHomeSBId      = "SellerHomeViewController"
+    static let buyerHomeSBId      = "BuyyerHomeViewController"
+    static let kitchenTitle        = "My Kitchen"
+    static let historyTitle        = "History"
+    static let directorySBId       = "DirectoryViewController"
+    static let profileTtile        = "Profile"
+    static let ordersTitle         = "Orders"
+    static let archiveSBId         = "HistoryViewController"
+    static let signoutTitle        = "Sign Out"
+}
+
 // UserDefaults
 // String enum values can be omitted when they are equal to the enumcase name
 enum UserDefaultsKey: String {

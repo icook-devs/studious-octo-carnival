@@ -14,7 +14,7 @@ protocol shopSetupProtocol {
     func getTodayDish(data: [String: AnyObject]?)
 
 }
-class SellerHomeViewController: HomeViewController,shopSetupProtocol {
+class SellerHomeViewController: BaseViewController,shopSetupProtocol {
    
     //@IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var firstSetupView: UIView!
@@ -40,7 +40,6 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
                     let kitchenName = kitchen["Kitchen"] ?? "" as String
 //                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
 //                    self.welcomeLabel.isHidden = false
-                    self.headerViewTitle?.text = ("Welcome to \(kitchenName)")
                 }
                 if let dishesArray = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()

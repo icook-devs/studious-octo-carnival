@@ -17,7 +17,6 @@
 		2C7E206920BDF1C9009457AB /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */; };
 		2CE47F1320C9882B000214B0 /* BuyyerDishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */; };
 		2CE47F1520C98841000214B0 /* BuyyerDishDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */; };
-		2CE47F1720C9AD44000214B0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */; };
 		2CE47F1920CAA608000214B0 /* BuyyerSelectedDishes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F1820CAA608000214B0 /* BuyyerSelectedDishes.storyboard */; };
 		2CE47F1B20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1A20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift */; };
 		2CE47F1D20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F1C20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift */; };
@@ -62,6 +61,10 @@
 		5CC3375620C79DAC00D32FAA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375520C79DAC00D32FAA /* HomeViewController.swift */; };
 		5CC3375820C79DBD00D32FAA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC3375720C79DBD00D32FAA /* Home.storyboard */; };
 		5CC3375A20C8610400D32FAA /* SellerItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375920C8610400D32FAA /* SellerItemHelper.swift */; };
+		5CC3375C20C9A09000D32FAA /* HomeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375B20C9A09000D32FAA /* HomeMenuViewController.swift */; };
+		5CC3375E20C9AAFD00D32FAA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3375D20C9AAFD00D32FAA /* BaseViewController.swift */; };
+		5CC3376120C9AB6200D32FAA /* NavigationBarButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3376020C9AB6200D32FAA /* NavigationBarButtonHelper.swift */; };
+		5CC3376320C9AD0E00D32FAA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3376220C9AD0E00D32FAA /* UIColor+Extension.swift */; };
 		64BDAC5A09FCC24B81F75584 /* Pods_iCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCCC8D87278434D9FB3F546 /* Pods_iCook.framework */; };
 		711820D9357F60C9EB4985B9 /* Pods_iCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */; };
 		E75EEB462B75A84AE17F82DF /* Pods_iCookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */; };
@@ -96,7 +99,6 @@
 		2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		2CE47F1220C9882B000214B0 /* BuyyerDishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerDishDetailViewController.swift; sourceTree = "<group>"; };
 		2CE47F1420C98841000214B0 /* BuyyerDishDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyyerDishDetail.storyboard; sourceTree = "<group>"; };
-		2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2CE47F1820CAA608000214B0 /* BuyyerSelectedDishes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyyerSelectedDishes.storyboard; sourceTree = "<group>"; };
 		2CE47F1A20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerSelectedDishesViewController.swift; sourceTree = "<group>"; };
 		2CE47F1C20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuyyerSelectedDishesViewController+TableView.swift"; sourceTree = "<group>"; };
@@ -148,6 +150,10 @@
 		5CC3375520C79DAC00D32FAA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5CC3375720C79DBD00D32FAA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5CC3375920C8610400D32FAA /* SellerItemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerItemHelper.swift; sourceTree = "<group>"; };
+		5CC3375B20C9A09000D32FAA /* HomeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuViewController.swift; sourceTree = "<group>"; };
+		5CC3375D20C9AAFD00D32FAA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		5CC3376020C9AB6200D32FAA /* NavigationBarButtonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarButtonHelper.swift; sourceTree = "<group>"; };
+		5CC3376220C9AD0E00D32FAA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7E6E98B515296AD141F7C622 /* Pods_iCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8390C268DA59BFBEC5DA2471 /* Pods-iCookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCookUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCookUITests/Pods-iCookUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CEC213F9AC56CE35C1B5E596 /* Pods_iCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,8 +215,8 @@
 				2C7E205A20BDC2E6009457AB /* Util+UserDefaults.swift */,
 				2C7E206820BDF1C9009457AB /* UITableView+Extensions.swift */,
 				5C34BD6F20BE61C400AE6A72 /* ScrollView+Extension.swift */,
-				2CE47F1620C9AD43000214B0 /* UIColor+Extension.swift */,
 				2CFA90A620C6FF3B00D58808 /* OverLay */,
+				5CC3376220C9AD0E00D32FAA /* UIColor+Extension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -373,10 +379,21 @@
 		5CC3375420C79D9700D32FAA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5CC3375F20C9AB2700D32FAA /* HomeHelper */,
 				5CC3375520C79DAC00D32FAA /* HomeViewController.swift */,
 				5CC3375720C79DBD00D32FAA /* Home.storyboard */,
+				5CC3375B20C9A09000D32FAA /* HomeMenuViewController.swift */,
+				5CC3375D20C9AAFD00D32FAA /* BaseViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5CC3375F20C9AB2700D32FAA /* HomeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5CC3376020C9AB6200D32FAA /* NavigationBarButtonHelper.swift */,
+			);
+			path = HomeHelper;
 			sourceTree = "<group>";
 		};
 		644B1EF7C597B3DE153C5840 /* Frameworks */ = {
@@ -625,7 +642,10 @@
 				2CFA909820C6FC7F00D58808 /* SellerHomeViewController+TableView.swift in Sources */,
 				2CFA90B020C7268B00D58808 /* Dish.swift in Sources */,
 				2CFA909A20C6FC7F00D58808 /* SellerShopViewController.swift in Sources */,
+				5CC3376320C9AD0E00D32FAA /* UIColor+Extension.swift in Sources */,
 				2C7E205520BDC254009457AB /* Util+Storyboard.swift in Sources */,
+				5CC3375E20C9AAFD00D32FAA /* BaseViewController.swift in Sources */,
+				5CC3375C20C9A09000D32FAA /* HomeMenuViewController.swift in Sources */,
 				2C7E205720BDC254009457AB /* Util.swift in Sources */,
 				2C7E205B20BDC2E6009457AB /* Util+UserDefaults.swift in Sources */,
 				2CFA90AC20C7216200D58808 /* BuyyerHomeViewController+TableView.swift in Sources */,
@@ -649,10 +669,10 @@
 				2CFA90A920C6FF3B00D58808 /* OverlayView.swift in Sources */,
 				2CFA90A120C6FC8A00D58808 /* AuthenticationService.swift in Sources */,
 				2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */,
-				2CE47F1720C9AD44000214B0 /* UIColor+Extension.swift in Sources */,
 				2CFA90B520C831FF00D58808 /* BuyyerDishTableViewCell.swift in Sources */,
 				2CFA909920C6FC7F00D58808 /* SellerHomeViewController.swift in Sources */,
 				2C7E205920BDC294009457AB /* Constants.swift in Sources */,
+				5CC3376120C9AB6200D32FAA /* NavigationBarButtonHelper.swift in Sources */,
 				2CFA90B220C727D400D58808 /* Seller.swift in Sources */,
 				2CE47F1320C9882B000214B0 /* BuyyerDishDetailViewController.swift in Sources */,
 				2CFA90A320C6FC8A00D58808 /* UserInfo.swift in Sources */,

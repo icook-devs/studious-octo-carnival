@@ -16,7 +16,7 @@ enum DishViewMode {
     case display
 }
 class SellerAddDishViewController: UIViewController,UIAlertViewDelegate,
-UINavigationControllerDelegate,UIScrollViewDelegate,buttonActions {
+UINavigationControllerDelegate,UIScrollViewDelegate {
 
     let dishName = 300
     let dishStyle = 301

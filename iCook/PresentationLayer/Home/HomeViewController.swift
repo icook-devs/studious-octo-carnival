@@ -8,146 +8,198 @@
 
 import UIKit
 
-enum headerButtonStyle:Int {
-    case left
-    case right
-    case both
+enum MenuAction: Int {
+    case open
+    case close
 }
 
-enum controller:Int {
-    case sellerKitchen
-    case sellerHome
-    case sellerAddDish
-    case buyerHome
+protocol MenuActionProtocol {
+    //Protocol to send menu selected item
+    func menuItemSelected(item: MenuItems)
+    //Action Protocol to open or close the slide menu
+    func slideMenu(to: MenuAction)
 }
 
-@objc protocol buttonActions {
-    
-    @objc
-    optional
-    func cancelTapped(_ sender: UIButton)
-    
-    @objc
-    optional func menuTapped(_ sender: AnyObject)
-}
+let SNAPSHOT_TAG = 100
+let SLIDE_CONTRAINT: CGFloat = -250
+let MENU_SEGUE = "MenuView"
 
-class HomeViewController: UIViewController {
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet public weak var headerViewTitle: UILabel!
-    @IBOutlet weak var headerRightButton: UIButton!
-    @IBOutlet weak var headerLeftButton: UIButton!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var rightButtonWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var leftButtonWidthConstraint: NSLayoutConstraint!
+class HomeViewController: UIViewController,MenuActionProtocol {
+
+    @IBOutlet weak var mainContainerView: UIView!
+    @IBOutlet weak var menuContainerView: UIView!
     
-    var currentChildController:UIViewController?
-
-
-    override public func viewDidLoad() {
+    @IBOutlet weak var overlayView: UIView!
+    
+    @IBOutlet weak var menuViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainViewLeadingContraint: NSLayoutConstraint!
+    
+    // MARK: Variables
+    var currentItem: String?
+    var currentVC: UINavigationController?
+    var typeUser = userType.Seller as userType
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if typeUser == .Seller {
+            menuItemSelected(item: .sellarHome)
+        }else {
+            menuItemSelected(item: .buyerHome)
+        }
+        overlayView.isHidden = true
+        self.setNeedsStatusBarAppearanceUpdate()
+        
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        rightSwipeGesture.direction = .right
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        leftSwipeGesture.direction = .left
+        mainContainerView.addGestureRecognizer(leftSwipeGesture)
+        overlayView.addGestureRecognizer(rightSwipeGesture)
+        
     }
     
-    func setupHeaderView(_ withButton:headerButtonStyle, buttons:[UIImage]) {
-        switch withButton {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == MENU_SEGUE {
+            guard let viewController = segue.destination as? HomeMenuViewController else {
+                return
+            }
+            viewController.menuProtocol = self
+            viewController.userMode = typeUser
+        }
+    }
+    
+    private func addShadow() {
+        mainContainerView.layer.shadowOpacity = 0.8
+        mainContainerView.layer.shadowColor = UIColor.black.cgColor
+        mainContainerView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        mainContainerView.layer.shadowRadius = 4.0
+        let shadowRect: CGRect = mainContainerView.bounds.insetBy(dx: 0, dy: 4)
+        mainContainerView.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
+    }
+    
+    func slideMenu(to: MenuAction) {
+        let menuButton =
+            self.currentVC?.topViewController?.navigationItem.rightBarButtonItems?.first
+        menuButton?.tag = to.rawValue
+        
+        switch to {
+        case .open:
+            openMenu()
+        case .close:
+            closeMenu()
+        }
+    }
+    
+    private func closeMenu() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.overlayView.isHidden = true
+            self.menuViewLeadingConstraint.constant = SLIDE_CONTRAINT
+            self.mainViewLeadingContraint.constant = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func openMenu() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.overlayView.isHidden = false
+            self.addShadow()
+            self.menuViewLeadingConstraint.constant = 0
+            self.mainViewLeadingContraint.constant = SLIDE_CONTRAINT
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    // MARK: Gesture Action
+    @objc
+    func respondToSwipeGesture(gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
         case .left:
-            rightButtonWidthConstraint.constant = 0.0
-            leftButtonWidthConstraint.constant = 36.0
+            slideMenu(to: .open)
         case .right:
-            leftButtonWidthConstraint.constant = 0.0
-            rightButtonWidthConstraint.constant = 36.0
-            headerRightButton.setImage(buttons.first, for: .normal)
-        case .both:
-            leftButtonWidthConstraint.constant = 36.0
-            rightButtonWidthConstraint.constant = 36.0
+            slideMenu(to: .close)
+        default:
+            break
         }
-        self.view.layoutIfNeeded()
     }
     
-    func setTitleText(_ title:String) {
-        headerViewTitle.text = title
-    }
+    // MARK: Protocol Methods
     
-    func addAsChildViewController(_ forController:controller) {
-        switch forController {
-        case .sellerKitchen:
-            guard let sellerKitchen = Util.viewControllerFrom(storyboard: .kitchen,
-                                                                         withIdentifier: .kitchenNavVC)
-                as? SellerShopViewController else {
-                    fatalError("No view controller with identifier SellerHomeViewController")
-            }
-            if currentChildController == nil {
-                currentChildController = sellerKitchen
-            } else {
-                removeContentController(currentChildController!)
-                currentChildController = sellerKitchen
-            }
-            addContentViewController(sellerKitchen)
-
-        case .sellerHome:
-            
-            guard let sellerHome = Util.viewControllerFrom(storyboard: .sellerHome,
-                                                              withIdentifier: .sellerHomeViewController)
-                as? SellerHomeViewController else {
-                    fatalError("No view controller with identifier SellerHomeViewController")
-            }
-            if currentChildController == nil {
-                currentChildController = sellerHome
-            } else {
-                removeContentController(currentChildController!)
-                currentChildController = sellerHome
-
-            }
-            addContentViewController(sellerHome)
-            
-        case .sellerAddDish:
-            
-            guard let sellerDish = Util.viewControllerFrom(storyboard: .addDish,
-                                                              withIdentifier: .addDishNavVC)
-                as? SellerAddDishViewController else {
-                    fatalError("No view controller with identifier SellerHomeViewController")
-            }
-            if currentChildController == nil {
-                currentChildController = sellerDish
-            } else {
-                removeContentController(currentChildController!)
-                currentChildController = sellerDish
-            }
-            addContentViewController(sellerDish)
-            headerRightButton.addTarget(sellerDish,
-                                        action: #selector(buttonActions.cancelTapped(_:)),
-                                        for: .touchUpInside)
-            
+    func menuItemSelected(item: MenuItems) {
+        switch item {
+        case .sellarHome:
+                showSellarHome()
         case .buyerHome:
-            guard let buyerHome = Util.viewControllerFrom(storyboard: .buyyerHome,
-                                                              withIdentifier: .buyyerHomeNavVC)
-                as? BuyyerHomeViewController else {
-                    fatalError("No view controller with identifier SellerHomeViewController")
-            }
-            if currentChildController == nil {
-                currentChildController = buyerHome
-            } else {
-                removeContentController(currentChildController!)
-                currentChildController = buyerHome
-            }
-            addContentViewController(buyerHome)
+            showBuyerHome()
+        case .orders:
+            print("Orders Tapped")
+        case .kitchen:
+            print("Kitchen Tapped")
+        case .profile:
+            print("Profile Tapped")
+        case .signout:
+            print("SignOut Tapped")
+        
+        case .history:
+            print("History Tapped")
+
         }
     }
     
-    
-    func addContentViewController(_ content: UIViewController) {
-        addChildViewController(content)
-        containerView.addSubview(content.view)
-        content.didMove(toParentViewController: self)
+    func showSellarHome() {
+        openSegue(storyboard: Util.storyboard(withName: .sellerHome), item: .sellarHome)
     }
     
-    func removeContentController(_ content: UIViewController) {
-        content.willMove(toParentViewController: nil)
-        content.view.removeFromSuperview()
-        content.removeFromParentViewController()
+    func showBuyerHome() {
+        openSegue(storyboard: Util.storyboard(withName: .buyyerHome), item: MenuItems.buyerHome)
+
     }
-
     
-
+    // MARK: Add or Remove VC to Container
+    
+    func openSegue(storyboard: UIStoryboard, item: MenuItems) {
+        
+        let newItem = item.item().description
+        if  currentItem != newItem {
+            currentItem = newItem
+            
+            guard let viewController = storyboard.instantiateViewController(withIdentifier: newItem)
+                as? BaseViewController else {
+                    return
+            }
+            viewController.menuProtocol = self
+            DispatchQueue.main.async {
+                let navigationController = viewController.embedNavigationCntrlWithBarButtons(controller: viewController,
+                                                                                             identifer: item)
+                if let vc = self.currentVC {
+                    self.removeViewController(controller: vc)
+                } else {
+                    self.currentVC = navigationController
+                }
+                self.addViewContoller(controller: navigationController)
+            }
+        }
+        slideMenu(to: .close)
+    }
+    
+    private func addViewContoller(controller: UINavigationController) {
+        currentVC = controller
+        addChildViewController(controller)
+        // Add Child View as Subview
+        mainContainerView.addSubview(controller.view)
+        // Configure Child View
+        controller.view.frame = mainContainerView.bounds
+        // Notify Child View Controller
+        controller.didMove(toParentViewController: self)
+    }
+    
+    private func removeViewController(controller: UINavigationController) {
+        // Notify Child View Controller
+        controller.willMove(toParentViewController: nil)
+        // Remove Child View From Superview
+        controller.view.removeFromSuperview()
+        // Notify Child View Controller
+        controller.removeFromParentViewController()
+    }
 }

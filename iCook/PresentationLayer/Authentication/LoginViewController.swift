@@ -118,19 +118,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
 
     func showBuyyerHomeScreen() {
-        let buyyerHomeNavVC = Util.navControllerFrom(storyboard: .buyyerHome,
-                                                              withIdentifier: .buyyerHomeNavVC)
-        self.present(buyyerHomeNavVC, animated: true)
+        self.showHomeScreen(type: .Buyer)
+
+//        let buyyerHomeNavVC = Util.navControllerFrom(storyboard: .buyyerHome,
+//                                                              withIdentifier: .buyyerHomeNavVC)
+//        self.present(buyyerHomeNavVC, animated: true)
     }
 
     func checkKitchenAddedStatusAndShowSellerScreen() {
-        FirebaseUtil.isKitchenAdded(isAdded: { isAdded in
+        FirebaseUtil.isKitchenAdded(isAdded: { [weak self] isAdded in
             Overlay.hide()
-            if isAdded == true {
-                self.showHomeScreen()
-            } else {
-                self.showAddKitchenVC()
-            }
+            
+            self?.showHomeScreen(type: .Seller)
+//            if isAdded == true {
+//                self.showHomeScreen()
+//            } else {
+//                self.showAddKitchenVC()
+//            }
         })
     }
 
@@ -188,6 +192,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             }
         }
 
+    }
+    
+    func showHomeScreen(type: userType) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
+            if let homeController = storyboard.instantiateViewController(
+                withIdentifier: StoryboardID.homeViewController.rawValue) as? HomeViewController {
+                homeController.typeUser = type
+                self.navigationController?.present(homeController, animated: true)
+            }
+        }
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
     }
