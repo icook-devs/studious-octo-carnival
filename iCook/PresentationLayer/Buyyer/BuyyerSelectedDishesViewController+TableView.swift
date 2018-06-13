@@ -14,8 +14,8 @@ extension BuyyerSelectedDishesViewController: UITableViewDataSource, UITableView
         dishesTableView.register(SelectedDishTableViewCell.self)
         dishesTableView.estimatedRowHeight =  UITableViewAutomaticDimension
         dishesTableView.rowHeight = 117
-        let nib = UINib(nibName: "BuyyerTableHeaderView", bundle: nil)
-        dishesTableView.register(nib, forHeaderFooterViewReuseIdentifier: "BuyyerTableHeaderView")
+        let nib = UINib(nibName: "BuyyerOrderTableHeaderView", bundle: nil)
+        dishesTableView.register(nib, forHeaderFooterViewReuseIdentifier: "BuyyerOrderTableHeaderView")
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,17 +29,14 @@ extension BuyyerSelectedDishesViewController: UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60  // or whatever
+        return 90
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BuyyerTableHeaderView") as? BuyyerTableHeaderView {
+        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BuyyerOrderTableHeaderView") as? BuyyerOrderTableHeaderView {
             let seller = sellers[section]
-            headerView.buyyerNameLabel.text = seller.kitchen?.name ?? ""
-            var address = seller.userInfo?.address
-            address?.append(" ")
-            address?.append(seller.userInfo?.getCityStateZip() ?? "")
-            headerView.address1Label.text = address
+            headerView.seller = seller
+            headerView.configureHeader()
             return headerView
         }
         return nil
