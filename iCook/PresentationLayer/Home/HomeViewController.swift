@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum MenuAction: Int {
     case open
@@ -139,12 +140,16 @@ class HomeViewController: UIViewController,MenuActionProtocol {
         case .profile:
             print("Profile Tapped")
         case .signout:
-            print("SignOut Tapped")
-        
+            signout()
         case .history:
             print("History Tapped")
 
         }
+    }
+    
+    func signout() {
+        try! Auth.auth().signOut()
+        self.dismiss(animated: true, completion: nil)
     }
     
     func showSellarHome() {
