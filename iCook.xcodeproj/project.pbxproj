@@ -24,6 +24,8 @@
 		2CE47F2520CAABCF000214B0 /* SelectedDishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F2320CAABCF000214B0 /* SelectedDishTableViewCell.swift */; };
 		2CE47F2720CAB25B000214B0 /* BuyyerTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F2620CAB25B000214B0 /* BuyyerTableHeaderView.swift */; };
 		2CE47F2D20CAB5DB000214B0 /* BuyyerTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F2C20CAB5DB000214B0 /* BuyyerTableHeaderView.xib */; };
+		2CE47F3A20D197FE000214B0 /* BuyyerOrderTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE47F3820D197FD000214B0 /* BuyyerOrderTableHeaderView.swift */; };
+		2CE47F3B20D197FE000214B0 /* BuyyerOrderTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CE47F3920D197FD000214B0 /* BuyyerOrderTableHeaderView.xib */; };
 		2CFA907820C6FC6E00D58808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA907720C6FC6E00D58808 /* LaunchScreen.storyboard */; };
 		2CFA908C20C6FC7F00D58808 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA907B20C6FC7F00D58808 /* LoginViewController.swift */; };
 		2CFA908D20C6FC7F00D58808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA907C20C6FC7F00D58808 /* Main.storyboard */; };
@@ -106,6 +108,8 @@
 		2CE47F2320CAABCF000214B0 /* SelectedDishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDishTableViewCell.swift; sourceTree = "<group>"; };
 		2CE47F2620CAB25B000214B0 /* BuyyerTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyyerTableHeaderView.swift; sourceTree = "<group>"; };
 		2CE47F2C20CAB5DB000214B0 /* BuyyerTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyyerTableHeaderView.xib; sourceTree = "<group>"; };
+		2CE47F3820D197FD000214B0 /* BuyyerOrderTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyyerOrderTableHeaderView.swift; sourceTree = "<group>"; };
+		2CE47F3920D197FD000214B0 /* BuyyerOrderTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyyerOrderTableHeaderView.xib; sourceTree = "<group>"; };
 		2CFA907720C6FC6E00D58808 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CFA907B20C6FC7F00D58808 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2CFA907C20C6FC7F00D58808 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				2CE47F1A20CAA626000214B0 /* BuyyerSelectedDishesViewController.swift */,
 				2CE47F1C20CAA67F000214B0 /* BuyyerSelectedDishesViewController+TableView.swift */,
 				2CE47F1820CAA608000214B0 /* BuyyerSelectedDishes.storyboard */,
+				2CE47F3820D197FD000214B0 /* BuyyerOrderTableHeaderView.swift */,
+				2CE47F3920D197FD000214B0 /* BuyyerOrderTableHeaderView.xib */,
 				2CE47F2320CAABCF000214B0 /* SelectedDishTableViewCell.swift */,
 				2CE47F2220CAABCF000214B0 /* SelectedDishTableViewCell.xib */,
 			);
@@ -532,6 +538,7 @@
 				5CC3375320C72E6A00D32FAA /* CB.jpg in Resources */,
 				2CFA90B620C831FF00D58808 /* BuyyerDishTableViewCell.xib in Resources */,
 				2CFA908D20C6FC7F00D58808 /* Main.storyboard in Resources */,
+				2CE47F3B20D197FE000214B0 /* BuyyerOrderTableHeaderView.xib in Resources */,
 				2CFA909520C6FC7F00D58808 /* Kitchen.storyboard in Resources */,
 				2CE47F1520C98841000214B0 /* BuyyerDishDetail.storyboard in Resources */,
 			);
@@ -677,6 +684,7 @@
 				2CE47F1320C9882B000214B0 /* BuyyerDishDetailViewController.swift in Sources */,
 				2CFA90A320C6FC8A00D58808 /* UserInfo.swift in Sources */,
 				2CFA90AE20C7267F00D58808 /* Kitchen.swift in Sources */,
+				2CE47F3A20D197FE000214B0 /* BuyyerOrderTableHeaderView.swift in Sources */,
 				2CFA90A220C6FC8A00D58808 /* SignUpHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
