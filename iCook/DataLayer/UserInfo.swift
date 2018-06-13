@@ -38,4 +38,50 @@ class UserInfo: NSObject {
         self.latitude = lat
         self.longitude = lon
     }
+
+    init(userInfoDict: [String: AnyObject]) {
+        self.firstName = userInfoDict["First Name"] as? String ?? ""
+        self.lastName = userInfoDict["Last Name"] as? String ?? ""
+        self.email = userInfoDict["email"] as? String ?? ""
+        self.phone = userInfoDict["phone"] as? String ?? ""
+        self.address = userInfoDict["Address"] as? String ?? ""
+        self.address2 = userInfoDict["Address2"] as? String ?? ""
+        self.city = userInfoDict["City"] as? String ?? ""
+        self.state = userInfoDict["State"] as? String ?? ""
+        let zipCode = userInfoDict["ZipCode"] as? Int ?? 0
+        self.zipCode = zipCode
+    }
+
+    func getFullName() -> String {
+        var fullName = ""
+        if firstName.isEmpty == false &&
+            lastName.isEmpty == false {
+            fullName.append(firstName)
+            fullName.append(" ")
+            fullName.append(lastName)
+        }
+        return fullName
+    }
+    func getCityStateZip() -> String {
+        var addressLine2 = ""
+        if city.isEmpty == false &&
+            state.isEmpty == false &&
+            zipCode != 0 {
+            addressLine2.append(city)
+            addressLine2.append(" ")
+            addressLine2.append(state)
+            addressLine2.append(" ")
+            addressLine2.append(String(zipCode))
+            return addressLine2
+        }
+
+        if city.isEmpty == false &&
+            state.isEmpty == false {
+            addressLine2.append(city)
+            addressLine2.append(" ")
+            addressLine2.append(state)
+            return addressLine2
+        }
+        return addressLine2
+    }
 }

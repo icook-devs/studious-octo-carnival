@@ -16,6 +16,8 @@ enum Storyboard: String {
     case sellerHome                 = "SellerHome"
     case buyyerHome                 = "BuyyerHome"
     case home                       = "Home"
+    case buyyerDishDetail           = "BuyyerDishDetail"
+    case buyyerSelectedDishes       = "BuyyerSelectedDishes"
 }
 
 // Storyboard viewController identifier
@@ -24,9 +26,25 @@ enum StoryboardID: String {
     case kitchenNavVC               = "KitchenNavVC"
     case addDishNavVC               = "AddDishNavVC"
     case sellerHomeViewController   = "SellerHomeViewController"
+    case sellerHomeNavVC            = "sellerHomeNavVC"
     case buyyerHomeNavVC            = "BuyyerHomeNavVC"
     case homeViewController         = "HomeViewController"
+    case buyyerDishDetailVC         = "BuyyerDishDetailViewController"
+    case buyyerSelectedDishesVC     = "BuyyerSelectedDishesViewController"
+}
 
+// MARK: Menu View Constants
+struct MenuView {
+    static let homeTitle           = "Home"
+    static let sellerHomeSBId      = "SellerHomeViewController"
+    static let buyerHomeSBId      = "BuyyerHomeViewController"
+    static let kitchenTitle        = "My Kitchen"
+    static let historyTitle        = "History"
+    static let directorySBId       = "DirectoryViewController"
+    static let profileTtile        = "Profile"
+    static let ordersTitle         = "Orders"
+    static let archiveSBId         = "HistoryViewController"
+    static let signoutTitle        = "Sign Out"
 }
 
 // UserDefaults

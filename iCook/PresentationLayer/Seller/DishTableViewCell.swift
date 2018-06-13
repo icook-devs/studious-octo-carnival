@@ -15,6 +15,8 @@ class DishTableViewCell: UITableViewCell, NibLoadableView {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dishTypeLabel: UILabel!
+    @IBOutlet weak var dishImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

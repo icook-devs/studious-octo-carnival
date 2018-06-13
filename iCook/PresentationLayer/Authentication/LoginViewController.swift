@@ -24,7 +24,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationController()
-        emailField.text = "pranavik@gmail.com" //emailTextField.text ?? ""
+        emailField.text = "pranavik1@gmail.com" //emailTextField.text ?? ""
         passwordField.text = "samba537" //passwordTextField.text ?? ""
         updateLoginButton()
 //        emailField.text = "sharat.guduru+2@gmail.com" //emailTextField.text ?? ""
@@ -118,33 +118,36 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
 
     func showBuyyerHomeScreen() {
-        let buyyerHomeNavVC = Util.navControllerFrom(storyboard: .buyyerHome,
-                                                              withIdentifier: .buyyerHomeNavVC)
-        self.present(buyyerHomeNavVC, animated: true)
+        self.showHomeScreen(type: .Buyer)
+
+//        let buyyerHomeNavVC = Util.navControllerFrom(storyboard: .buyyerHome,
+//                                                              withIdentifier: .buyyerHomeNavVC)
+//        self.present(buyyerHomeNavVC, animated: true)
     }
 
     func checkKitchenAddedStatusAndShowSellerScreen() {
-        FirebaseUtil.isKitchenAdded(isAdded: { isAdded in
+        FirebaseUtil.isKitchenAdded(isAdded: { [weak self] isAdded in
             Overlay.hide()
-            if isAdded == true {
-                self.showHomeScreen()
-            } else {
-                self.showAddKitchenVC()
-            }
+            
+            self?.showHomeScreen(type: .Seller)
+//            if isAdded == true {
+//                self.showHomeScreen()
+//            } else {
+//                self.showAddKitchenVC()
+//            }
         })
     }
 
     func showHomeScreen() {
-        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
-                                                                     withIdentifier: .homeViewController)
-            as? HomeViewController else {
+        guard let sellerHomeViewController = Util.navControllerFrom(storyboard: .sellerHome,
+                                                                     withIdentifier: .sellerHomeNavVC) as? UINavigationController else {
                 fatalError("No view controller with identifier SellerHomeViewController")
         }
         
         self.navigationController?.present(sellerHomeViewController, animated: true, completion: {
-            sellerHomeViewController.setupHeaderView(.right,
-                                                     buttons: [#imageLiteral(resourceName: "menu")])
-            sellerHomeViewController.addAsChildViewController(.sellerHome)
+//            sellerHomeViewController.setupHeaderView(.right,
+//                                                     buttons: [#imageLiteral(resourceName: "menu")])
+//            sellerHomeViewController.addAsChildViewController(.sellerHome)
         })
     }
 
@@ -189,6 +192,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             }
         }
 
+    }
+    
+    func showHomeScreen(type: userType) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
+            if let homeController = storyboard.instantiateViewController(
+                withIdentifier: StoryboardID.homeViewController.rawValue) as? HomeViewController {
+                homeController.typeUser = type
+                self.navigationController?.present(homeController, animated: true)
+            }
+        }
     }
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
     }

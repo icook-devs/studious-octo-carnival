@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class BuyyerHomeViewController: UIViewController {
+class BuyyerHomeViewController: BaseViewController {
 
     @IBOutlet weak var dishesTableView: UITableView!
     var ref: DatabaseReference!
@@ -20,37 +20,55 @@ class BuyyerHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViews()
-        ref = Database.database().reference()
-        dishesRefHandle = ref.observe(.value, with: { (snapshot) in
-            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-            if let sellers = postDict[FirebaseTable.Seller] as? [String : AnyObject] {
-                for seller in sellers.values {
-                    let sellerModel = Seller()
-                    if let sellerObject = seller as? [String: AnyObject] {
-                        if let kitchenDict = sellerObject[FirebaseTable.Kitchen] as? [String: AnyObject] {
-                            sellerModel.kitchen = Kitchen(kitchenDictory: kitchenDict)
-                        }
-                        if let dishes = sellerObject[FirebaseTable.Dish] as? [String : AnyObject] {
-                            var disheModels = [Dish]()
-                            for dish in dishes.values {
-                                if let dishDict = dish as? [String: AnyObject] {
-                                    let dishModel = Dish(dishDictory: dishDict)
-                                    disheModels.append(dishModel)
-                                }
-                            }
-                            sellerModel.dishes = disheModels
-                        }
-                        self.sellers.append(sellerModel)
-                    }
-                }
-                NSLog("\(self.sellers)")
-                self.dishesTableView.reloadData()
-            }
+        Overlay.show(on: self.view)
+        FirebaseUtil.getSellersForBuyyer(sellers: { sellersArray in
+            self.sellers = sellersArray
+            self.dishesTableView.reloadData()
+            Overlay.hide()
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.checkAndShowOrHideNextButton()
+    }
+
+    func nextTapped(_ sender: AnyObject) {
+        guard let selectedDishesVC = Util.viewControllerFrom(storyboard: .buyyerSelectedDishes,
+                                                       withIdentifier: .buyyerSelectedDishesVC)
+            as? BuyyerSelectedDishesViewController else {
+                fatalError("No view controller with identifier BuyyerSelectedDishesViewController")
+        }
+        selectedDishesVC.sellers = sellers
+        self.navigationController?.pushViewController(selectedDishesVC, animated: true)
+    }
+
+//    func nextBarButtonItem() -> UIBarButtonItem {
+//        let barButtonItem = UIBarButtonItem(title: "Next",
+//                                            style: .done,
+//                                            target: self,
+//                                            action: #selector(nextBarButtonItemTapped))
+//        return barButtonItem
+//    }
+    
+
+    func checkAndShowOrHideNextButton() {
+        let nextButton = navigationItem.rightBarButtonItems?.last
+        var isSelectedDishes = false
+        for seller in sellers {
+            let selectedDishes = seller.dishes.filter() { $0.isAddedToOder == true }
+            if selectedDishes.isEmpty == false {
+                isSelectedDishes = true
+                break
+            }
+        }
+        
+        if isSelectedDishes {
+            nextButton?.isEnabled = true
+            nextButton?.title = "Next"
+        } else {
+            nextButton?.isEnabled = false
+            nextButton?.title = nil
+        }
     }
 }

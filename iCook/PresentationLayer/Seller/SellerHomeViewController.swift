@@ -14,7 +14,7 @@ protocol shopSetupProtocol {
     func getTodayDish(data: [String: AnyObject]?)
 
 }
-class SellerHomeViewController: HomeViewController,shopSetupProtocol {
+class SellerHomeViewController: BaseViewController,shopSetupProtocol {
    
     //@IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var firstSetupView: UIView!
@@ -32,12 +32,6 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
         firstSetupView.isHidden = isKitchenAdded
         ref = Database.database().reference()
 
-//        refHandle = ref.child(FirebaseTable.Dish).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
-//            guard let strongSelf = self else { return }
-//            strongSelf.dishes.append(snapshot)
-//            strongSelf.dishesTableView.insertRows(at: [IndexPath(row: strongSelf.dishes.count-1, section: 0)], with: .automatic)
-//        })
-
         dishesRefHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
             if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],
@@ -46,12 +40,13 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
                     let kitchenName = kitchen["Kitchen"] ?? "" as String
 //                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
 //                    self.welcomeLabel.isHidden = false
-                    self.headerViewTitle?.text = ("Welcome to \(kitchenName)")
                 }
                 if let dishesArray = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()
-                    for dishDict in dishesArray.values {
-                        let dishModel = Dish(dishDictory: dishDict as [String : AnyObject])
+                    for (key, value) in dishesArray {
+                        let dishDict = value
+                        let dishModel = Dish(dishDictory: dishDict as [String : AnyObject],
+                                             dishID: key)
                         self.dishes.append(dishModel)
                     }
                     self.dishesTableView.reloadData()
@@ -87,22 +82,25 @@ class SellerHomeViewController: HomeViewController,shopSetupProtocol {
     
     @IBAction func addItem(sender: UIButton) {
         
-        //TODO# still need to optimize it
-        guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
-                                                                     withIdentifier: .homeViewController)
-            as? HomeViewController else {
-                fatalError("No view controller with identifier SellerHomeViewController")
-        }
-        self.present(sellerHomeViewController, animated: true, completion: {
-            sellerHomeViewController.setupHeaderView(.right, buttons:[#imageLiteral(resourceName: "cancel")])
-            sellerHomeViewController.addAsChildViewController(.sellerAddDish)
-            sellerHomeViewController.headerViewTitle.text = "Add Dish"
-        })
-        
-//        let addDishNavVC = Util.navControllerFrom(storyboard: .addDish, withIdentifier: .addDishNavVC)
-//        let addDishViewController = addDishNavVC.viewControllers[0] as? SellerAddDishViewController
-//        addDishViewController?.delegate = self
-//        self.present(addDishNavVC, animated: true)
+        guard let addDishViewController = Util.viewControllerFrom(storyboard: .addDish,
+                                                                         withIdentifier: .addDishNavVC)
+                as? SellerAddDishViewController else {
+            fatalError("No view controller with identifier SellerAddDishViewController")
+            }
+        addDishViewController.delegate = self
+        self.navigationController?.pushViewController(addDishViewController, animated: true)
     }
+    
+//    //TODO# still need to optimize it
+//    guard let sellerHomeViewController = Util.viewControllerFrom(storyboard: .home,
+//                                                                 withIdentifier: .homeViewController)
+//        as? HomeViewController else {
+//    fatalError("No view controller with identifier SellerHomeViewController")
+//    }
+//    self.present(sellerHomeViewController, animated: true, completion: {
+//    sellerHomeViewController.setupHeaderView(.right, buttons:[#imageLiteral(resourceName: "cancel")])
+//    sellerHomeViewController.addAsChildViewController(.sellerAddDish)
+//    sellerHomeViewController.headerViewTitle.text = "Add Dish"
+//    })
     
 }
