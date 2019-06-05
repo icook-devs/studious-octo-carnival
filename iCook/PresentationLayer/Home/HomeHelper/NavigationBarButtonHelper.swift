@@ -15,6 +15,7 @@ enum BarButtonItemPosition {
 
 enum BarButtonItemType {
     case menu
+    case filter
     case next
     case back
 }
@@ -34,6 +35,9 @@ protocol BarButtonItemConfiguration: class {
     
     @objc
     optional func navigateBack(_ sender: AnyObject)
+
+    @objc
+    optional func filterTapped(_ sender: AnyObject)
 }
 
 extension BarButtonItemConfiguration where Self: UIViewController, Self: BarButtonActions {
@@ -55,6 +59,10 @@ extension BarButtonItemConfiguration where Self: UIViewController, Self: BarButt
 //                                           action: #selector(Self.self.navigateBack(_:)))
 //                backbutton.accessibilityIdentifier = AccessibilityId.BackButton.rawValue
 //                barButtonItems.append(backbutton)
+            } else if type == .filter {
+                let nextButton = barButton(with: "Filter",
+                                           action: #selector(Self.self.filterTapped(_:)))
+                barButtonItems.append(nextButton)
             }
         }
         if pos == .right {

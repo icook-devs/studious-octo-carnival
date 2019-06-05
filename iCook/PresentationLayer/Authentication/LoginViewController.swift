@@ -47,11 +47,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.black]
+            [NSAttributedString.Key.foregroundColor: UIColor.black]
         
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedStringKey.foregroundColor:UIColor.black,
-             NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 22)]
+            [NSAttributedString.Key.foregroundColor:UIColor.black,
+             NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 22)]
     }
 
     func updateLoginButton() {
@@ -139,10 +139,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
 
     func showHomeScreen() {
-        guard let sellerHomeViewController = Util.navControllerFrom(storyboard: .sellerHome,
-                                                                     withIdentifier: .sellerHomeNavVC) as? UINavigationController else {
-                fatalError("No view controller with identifier SellerHomeViewController")
-        }
+        let sellerHomeViewController = Util.navControllerFrom(storyboard: .sellerHome,
+                                                              withIdentifier: .sellerHomeNavVC)
         
         self.navigationController?.present(sellerHomeViewController, animated: true, completion: {
 //            sellerHomeViewController.setupHeaderView(.right,

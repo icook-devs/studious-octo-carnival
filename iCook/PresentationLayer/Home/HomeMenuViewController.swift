@@ -93,7 +93,7 @@ class HomeMenuViewController: UIViewController {
     
     private func setupTableView() {
         menuTableView.rowHeight = 60
-        menuTableView.estimatedRowHeight = UITableViewAutomaticDimension
+        menuTableView.estimatedRowHeight = UITableView.automaticDimension
         menuTableView.contentInset = UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 0)
     }
 }

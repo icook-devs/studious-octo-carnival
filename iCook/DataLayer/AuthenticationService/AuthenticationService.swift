@@ -31,9 +31,6 @@ class AuthenticationService: NSObject {
         guard let email = userData?.email else {
             return
         }
-        guard let password = password as? String else {
-            return
-        }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil,

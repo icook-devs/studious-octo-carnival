@@ -11,13 +11,13 @@ import CoreLocation
 class SignUpHelper: NSObject {
 
     class func isValidPassword(password: String) -> Bool {
-        var result: Bool = true
+//        var result: Bool = true
 //        if !password.isEmpty {
 //            let passRegEx = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z\\W_]{8,}$"
 //            let passTest = NSPredicate(format: "SELF MATCHES %@", passRegEx)
 //            result = passTest.evaluate(with: password)
 //        }
-        return result
+        return true
     }
     
     class func isValidEmail(email: String) -> Bool {

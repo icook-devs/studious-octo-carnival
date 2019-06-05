@@ -36,11 +36,11 @@ class SellerHomeViewController: BaseViewController,shopSetupProtocol {
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
             if let users = postDict[FirebaseTable.Seller] as? [String : AnyObject],
                 let loggedInUser = users[FirebaseUtil.loggedInUserUserID()] as? [String : AnyObject] {
-                if let kitchen = loggedInUser[FirebaseTable.Kitchen] as? [String : String] {
-                    let kitchenName = kitchen["Kitchen"] ?? "" as String
+//                if let kitchen = loggedInUser[FirebaseTable.Kitchen] as? [String : String] {
+//                    let kitchenName = kitchen["Kitchen"] ?? "" as String
 //                    self.welcomeLabel.text = "Welcome to \(kitchenName)"
 //                    self.welcomeLabel.isHidden = false
-                }
+//                }
                 if let dishesArray = loggedInUser[FirebaseTable.Dish] as? [String: Dictionary<String, String>] {
                     self.dishes.removeAll()
                     for (key, value) in dishesArray {
@@ -60,9 +60,9 @@ class SellerHomeViewController: BaseViewController,shopSetupProtocol {
         guard let shopDetail = data else {
             return
         }
-        if let kitchenName = shopDetail["Kitchen"] as? String {
-            //self.headerViewTitle.text = ("Welcome to \(kitchenName)")
-        }
+//        if let kitchenName = shopDetail["Kitchen"] as? String {
+//            self.headerViewTitle.text = ("Welcome to \(kitchenName)")
+//        }
         firstSetupView.isHidden = Util.getBool(.isKitchenAdded)
     }
     

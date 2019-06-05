@@ -57,11 +57,11 @@ class SignUpViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.black]
+            [NSAttributedString.Key.foregroundColor: UIColor.black]
         
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedStringKey.foregroundColor:UIColor.black,
-             NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 22)]
+            [NSAttributedString.Key.foregroundColor:UIColor.black,
+             NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 22)]
     }
     
     func validateFields() -> Bool {
@@ -141,9 +141,6 @@ class SignUpViewController: UIViewController {
                                                     }
                 })
             }
-            
-            
-            
         }
         
     }

@@ -22,7 +22,7 @@ class BaseViewController: UIViewController, BarButtonConfigarable {
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.barTintColor = UIColor(hex: 0xFF3333)
         navController.navigationBar.tintColor = .white
-        navController.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         setupNavigationBar(selectedMenu: identifer)
         return navController
     }
@@ -34,6 +34,7 @@ class BaseViewController: UIViewController, BarButtonConfigarable {
             self.addBarbuttonItems(forType: [.menu], pos: .right)
         case .buyerHome:
             self.addBarbuttonItems(forType: [.menu,.next], pos: .right)
+            self.addBarbuttonItems(forType: [.filter], pos: .left)
         case .signout:break
         }
         self.title = selectedMenu.item().title
