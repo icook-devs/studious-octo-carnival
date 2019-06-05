@@ -34,7 +34,7 @@ class Overlay: UIView {
             overlay.frame = overlayTarget.frame
             overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             overlayTarget.addSubview(overlay)
-            overlayTarget.bringSubview(toFront: overlay)
+            overlayTarget.bringSubviewToFront(overlay)
         }
     }
 

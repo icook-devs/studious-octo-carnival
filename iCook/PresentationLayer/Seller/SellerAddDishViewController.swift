@@ -158,6 +158,11 @@ UINavigationControllerDelegate,UIScrollViewDelegate {
     }
 
     func isValidateEntries() -> Bool {
+        if dishImageView.image == nil {
+            Util.showOkAlert(title: "Please upload a dish image", message: "")
+            return false
+        }
+
         return true
     }
     
@@ -166,18 +171,18 @@ UINavigationControllerDelegate,UIScrollViewDelegate {
                                                         message: nil,
                                                         preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "Use Camera", style: UIAlertActionStyle.default)
+        let cameraAction = UIAlertAction(title: "Use Camera", style: UIAlertAction.Style.default)
         {
             UIAlertAction in
             
             self.openCamera()
         }
-        let galleryAction = UIAlertAction(title: "Use Gallery", style: UIAlertActionStyle.default)
+        let galleryAction = UIAlertAction(title: "Use Gallery", style: UIAlertAction.Style.default)
         {
             UIAlertAction in
             self.openGallery()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
         {
             UIAlertAction in
         }
@@ -192,6 +197,10 @@ UINavigationControllerDelegate,UIScrollViewDelegate {
     }
     
     func saveImageAndUpdateDB(key: String) {
+        Overlay.show(on: self.view,
+                     isTrasparent: true,
+                     loadingText: "Saving ..",
+                     overlayAlpha: 0.5)
         FirebaseUtil.uploadMedia(key, image: dishImageView.image!, completion: { (imageUrl) in
             guard let imgUrlStr = imageUrl else {
                 self.navigationController?.popViewController(animated: true)
@@ -200,6 +209,7 @@ UINavigationControllerDelegate,UIScrollViewDelegate {
             self.dishData["DishImage"] = imgUrlStr as AnyObject
             let userId = FirebaseUtil.loggedInUser().uid
             self.ref.child(FirebaseTable.Seller).child(userId).child(FirebaseTable.Dish).child(key).setValue(self.dishData)
+            Overlay.hide()
             self.navigationController?.popViewController(animated: true)
         })
     }
@@ -224,22 +234,29 @@ UINavigationControllerDelegate,UIScrollViewDelegate {
         }
         
     }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
     @IBAction func rightBarButtonTapped(_ sender: UIBarButtonItem) {
         if sender.title == "Edit" {
             mode = .edit
             setupNaviagationbar(mode)
         } else if sender.title == "Update" {
-            self.textFieldDidEndEditing(selectedTexfield!)
-            updateDishToFBDB((self.dish?.dishId)!)
+            if self.textFieldDidEndEditingAndUpdate(selectedTexfield) {
+                updateDishToFBDB((self.dish?.dishId)!)
+            }
         } else {
-            self.textFieldDidEndEditing(selectedTexfield!)
-            addDishToFBDB()
+            if self.textFieldDidEndEditingAndUpdate(selectedTexfield) {
+                addDishToFBDB()
+            } else {
+                Util.showOkAlert(title: "Please enter data", message: "")
+            }
         }
     }
     
     
     //MARK: Class Funtions
-    
     func addDishToFBDB() {
         if isValidateEntries() == true {
             Util.setValue(true, key: .isKitchenAdded)
@@ -279,7 +296,10 @@ extension SellerAddDishViewController: UITextFieldDelegate {
         textField.keyboardType = textField.tag > 301 ? .numberPad : .alphabet
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditingAndUpdate(_ textField: UITextField?) -> Bool {
+        guard let textField = textField else {
+            return false
+        }
         switch textField.tag {
         case dishName:
             dishData["Name"] = textField.text as AnyObject
@@ -294,6 +314,7 @@ extension SellerAddDishViewController: UITextFieldDelegate {
         default:
             break
         }
+        return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -328,12 +349,25 @@ extension SellerAddDishViewController: UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let image = (info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage)
         dishImageView.image = SellerItemHelper.resizeImage(image: image!,
                                                            targetSize: CGSize(width: 100, height: 100))
         self.dismiss(animated: true) { [weak self] in
             self?.updateImageTitle()
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

@@ -18,6 +18,7 @@ enum Storyboard: String {
     case home                       = "Home"
     case buyyerDishDetail           = "BuyyerDishDetail"
     case buyyerSelectedDishes       = "BuyyerSelectedDishes"
+    case filterDishes               = "FilterDishes"
 }
 
 // Storyboard viewController identifier
@@ -31,6 +32,7 @@ enum StoryboardID: String {
     case homeViewController         = "HomeViewController"
     case buyyerDishDetailVC         = "BuyyerDishDetailViewController"
     case buyyerSelectedDishesVC     = "BuyyerSelectedDishesViewController"
+    case filterDishesNavVC          = "FilterDishesNavVC"
 }
 
 // MARK: Menu View Constants

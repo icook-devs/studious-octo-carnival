@@ -14,7 +14,7 @@ class UserInfo: NSObject {
     var email: String = ""
     var phone: String = ""
     var address: String = ""
-    var address2: String?
+    var address2: String = ""
     var city:String = ""
     var state:String = ""
     var zipCode:Int = 0

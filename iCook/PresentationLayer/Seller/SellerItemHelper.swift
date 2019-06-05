@@ -16,7 +16,9 @@ enum PickerOption {
     case orderType
     case paymentType
     case availablityType
+    case radious
 }
+
 class SellerItemHelper {
     var storageRef: Storage!
     class func getPickerDatasource(option: PickerOption) -> [String] {
@@ -33,6 +35,8 @@ class SellerItemHelper {
             return ["Cash"]
         case .availablityType:
             return ["Today", "On-Request"]
+        case .radious:
+            return ["5 Miles", "10 Miles", "20 Miles", "30 Miles"]
         }
     }
     

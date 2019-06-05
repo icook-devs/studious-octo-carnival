@@ -49,7 +49,7 @@ class FirebaseUtil: NSObject {
     
     class func uploadMedia(_ forChild:String, image:UIImage, completion: @escaping (_ url: String?) -> Void) {
         let storageRef = Storage.storage().reference().child("DishImages/\(forChild).png")
-        if let uploadData = UIImagePNGRepresentation(image) {
+        if let uploadData = image.pngData() {
             
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {

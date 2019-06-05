@@ -157,7 +157,7 @@ class HomeViewController: UIViewController,MenuActionProtocol {
     }
     
     func showBuyerHome() {
-        openSegue(storyboard: Util.storyboard(withName: .buyyerHome), item: MenuItems.buyerHome)
+        openSegue(storyboard: Util.storyboard(withName: .buyyerHome), item: .buyerHome)
 
     }
     
@@ -190,21 +190,21 @@ class HomeViewController: UIViewController,MenuActionProtocol {
     
     private func addViewContoller(controller: UINavigationController) {
         currentVC = controller
-        addChildViewController(controller)
+        addChild(controller)
         // Add Child View as Subview
         mainContainerView.addSubview(controller.view)
         // Configure Child View
         controller.view.frame = mainContainerView.bounds
         // Notify Child View Controller
-        controller.didMove(toParentViewController: self)
+        controller.didMove(toParent: self)
     }
     
     private func removeViewController(controller: UINavigationController) {
         // Notify Child View Controller
-        controller.willMove(toParentViewController: nil)
+        controller.willMove(toParent: nil)
         // Remove Child View From Superview
         controller.view.removeFromSuperview()
         // Notify Child View Controller
-        controller.removeFromParentViewController()
+        controller.removeFromParent()
     }
 }

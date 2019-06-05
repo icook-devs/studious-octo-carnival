@@ -13,7 +13,7 @@ extension SellerHomeViewController: UITableViewDataSource, UITableViewDelegate {
     func setupTableViews() {
         // Register the Cells using the NibLoadableView Protocol
         dishesTableView.register(DishTableViewCell.self)
-        dishesTableView.estimatedRowHeight =  UITableViewAutomaticDimension
+        dishesTableView.estimatedRowHeight =  UITableView.automaticDimension
         dishesTableView.rowHeight = 150
     }
 

@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController {
         self.navigationController?.popViewController(animated: false)
     }
 
+    // MARK: - Table view 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -57,8 +58,4 @@ class ProfileViewController: UIViewController {
         }
         
     }
-    
-  
-    
-
 }
